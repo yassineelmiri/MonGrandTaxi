@@ -2,28 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class Profile extends User implements MustVerifyEmail
+class Profile extends Model
 {
+    use HasFactory;
     use SoftDeletes;
 
-    protected $dates =['created_at','email_verified_at'];
+    protected $date = ['created_at'];
     protected $fillable = [
         'name',
         'email',
         'password',
         'bio',
-        'image',
-        'email_verified_at'
+        'image'
     ];
-    public function getImageAttribute($value) {
-
-        return $value??'profile/profile.png';
+    public function getImageAttribute($value){
+        return $value??'profile/AcrF4Qg7ux89NUng2KtdPimqrqiigAJ9DKBzcIUv.png';
     }
-
     public function publications(){
-        return $this->hasMany(Publication::class);  
+        return $this->hasMany(Publication::class);
     }
 }

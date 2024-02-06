@@ -2,34 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Publication;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\PublicationRequest;
+use App\Models\Publication;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class PublicationController extends Controller
 {
-
-    public function __construct(){
-        $this->middleware('auth')->except('index');
-    }
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $publications = Publication::latest()->paginate();
-        
-        return view('publication.index',compact('publications'));
+        $publications = Publication::latest()->paginate(3);
+        return view('publication.index', compact('publications'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -38,30 +29,28 @@ class PublicationController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(PublicationRequest $request)
     {
+
         $formFields = $request->validated();
-        $this->uploadImage($request,$formFields);
+        $this->uploadImage($request, $formFields);
         $formFields['profile_id'] = Auth::id();
         Publication::create($formFields);
-        
-        return to_route('publications.index')->with('success','La publica à bien été publiée');;
+        return to_route('publication.index')->with('success', 'votre recette a été bien create .');
+
     }
-    private function uploadImage(PublicationRequest $request,array &$formFields){
+    private function uploadImage(PublicationRequest $request, array &$formFields)
+    {
+        //insert image
         unset($formFields['image']);
-        if($request->hasFile('image')){
-            $formFields['image'] = $request->file('image')->store('publication','public');
+        if ($request->hasfile('image')) {
+            $formFields['image'] = $request->file('image')->store('publication', 'public');
         }
     }
+
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\Publication  $publication
-     * @return \Illuminate\Http\Response
      */
     public function show(Publication $publication)
     {
@@ -70,46 +59,40 @@ class PublicationController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Publication  $publication
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Publication $publication,Request $request)
+    public function edit(Publication $publication)
     {
-
-        // Authorization :
-
-        // Policies (Controllers) PublicationPolicy
-        $this->authorize('update',$publication);
-        return view('publication.edit',compact('publication'));
+        return view('publication.edit', compact('publication'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Publication  $publication
-     * @return \Illuminate\Http\Response
      */
     public function update(PublicationRequest $request, Publication $publication)
     {
-        Gate::authorize('update-publication',$publication);
         $formFields = $request->validated();
-        $this->uploadImage($request,$formFields);
+        $this->uploadImage($request, $formFields);
         $publication->fill($formFields)->save();
-        return to_route('publications.index')->with('success','La publication à bien été modifiée');
+        return to_route('publication.index')->with('success', 'votre recette a été bien modifier .');
+
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Publication  $publication
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Publication $publication)
     {
         $publication->delete();
-        return to_route('publications.index')->with('success','La publication à bien été supprimée');
+        return to_route('publication.index')->with('success', 'votre recette a été bien supprimer .');
+
 
     }
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $publications = Publication::where('titer', 'LIKE', "%$search%")->paginate(3);
+
+        return view('publication.index', compact('publications'));
+    }
+
 }
