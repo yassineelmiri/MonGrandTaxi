@@ -1,6 +1,5 @@
-@extends('base')
-@section('title', 'recettes')
-@section('content')
+<x-master title="Page Home">
+
 
     <section class="banner-19">
         <div class="banner-layer">
@@ -20,17 +19,17 @@
 
     {{-- <section   class="mx-1 mb-5 fcpol"> --}}
     {{-- 
-    <div class="container mb-5 mt-5">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-lg-9 text-center">
-            <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
-                @csrf
-              <input type="search" class="form-control px-4" name="search" id="search" placeholder="You can search at RECETTES here" />
-             <button type="submit"  class="btn btn-primary">Search</button>
-            </form>
-          </div>
-        </div>
-      </div> --}}
+        <div class="container mb-5 mt-5">
+            <div class="row justify-content-center align-items-center">
+            <div class="col-lg-9 text-center">
+                <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
+                    @csrf
+                <input type="search" class="form-control px-4" name="search" id="search" placeholder="You can search at RECETTES here" />
+                <button type="submit"  class="btn btn-primary">Search</button>
+                </form>
+            </div>
+            </div>
+        </div> --}}
 
 
     <section class="w3l-bottom-grids-6 py-5">
@@ -69,8 +68,8 @@
                 <div class="col-lg-6 about-2-secs-right mb-lg-0 mb-5">
                     <div class="image-box inverse position-relative">
                         <div class="image-box__static">
-                            <img src="assets/images/delicieux-burger-ingredients-frais.jpg" alt="" width="364"
-                                height="459">
+                            <img src="assets/images/delicieux-burger-ingredients-frais.jpg" alt=""
+                                width="364" height="459">
                         </div>
                         <div class="image-box__float">
                             <img src="assets/images/salade-fruits-renversee-sol-etait-gachis-couleurs-textures-vibrantes-generative-ai.jpg"
@@ -99,7 +98,7 @@
     <div class="w3l-grids-block-5 pb-5 pt-md-2 pt-4">
         <div class="container pb-lg-5 pb-md-4 pb-2">
             <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-                <h5 class="sub-title">What We Offer</h5>
+                <h5>What We Offer</h5>
                 <h3 class="title-style">Our taxi</h3>
             </div>
             <div class="row text-center justify-content-center">
@@ -150,91 +149,32 @@
         </div>
     </section>
     {{--     
-<h1 class="mx-5 mb-5 kilua">LAST RACETTES:</h1>
+    <h1 class="mx-5 mb-5 kilua">LAST RACETTES:</h1>
 
-<div class="row">
-    @forelse ($recettes as $recette)
-        <div class="col-md-4 mb-4 wikis">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{$recette->name}}</h5>
-                    <img src="/storage/{{$recette->image}}" alt="{{$recette->image}}" class="img-fluid w-100 rounded-3">
-                    <p class="card-text">{{$recette->description}}<br></p>
-                    <p class="card-text">choumicha</p>
-                    <div class="specs"></div>
-                    <div class="card-footer">
-                        <a class="showw " href="{{ route('showOne', ['id' => $recette->id]) }}">Show</a>
+    <div class="row">
+        @forelse ($recettes as $recette)
+            <div class="col-md-4 mb-4 wikis">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$recette->name}}</h5>
+                        <img src="/storage/{{$recette->image}}" alt="{{$recette->image}}" class="img-fluid w-100 rounded-3">
+                        <p class="card-text">{{$recette->description}}<br></p>
+                        <p class="card-text">choumicha</p>
+                        <div class="specs"></div>
+                        <div class="card-footer">
+                            <a class="showw " href="{{ route('showOne', ['id' => $recette->id]) }}">Show</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @empty
-        <div class="col-md-12">
-            <h1>no recettes</h1>
-        </div>
-    @endforelse
-</div>
-</section> --}}
-
-
-
-
-
-
-    <footer id="f" class="w3l-footer-29-main">
-        <div class="footer-29-w3l py-5">
-            <div class="container pt-md-5 pt-4">
-                <div class="row footer-top-29 pt-lg-5 pt-sm-4">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="address-grid">
-                            <h5>001 rue rabat st, 5th Asafi, <br> Maroc.</h5>
-                            <h5 class="mt-sm-5 mt-4">Everyday: <span> 9 AM - 5:30 PM</span></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 mt-sm-0 mt-4">
-                        <div class="address-grid">
-                            <h5 class="top-bold">Phone</h5>
-                            <h5 class="phone-number-text mt-2"><a href="tel:+1(21) 112 7368">+(212)6 14 23 23 58</a></h5>
-                        </div>
-                        <div class="address-grid mt-sm-5 mt-4">
-                            <h5 class="top-bold">E-mail</h5>
-                            <h5 class="email-cont-text mt-1"> <a href="mailto:youcode@gmail.com"
-                                    class="mail">youcode@gmail.com</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-sm-5 footer-list-menu ps-lg-0 mt-lg-0 mt-sm-5 mt-4">
-                        <div class="address-grid">
-                            <h5 class="mb-sm-4 mb-3 pb-lg-2 top-bold">Support Links</h5>
-                            <ul>
-                                <li><a href="#privacy">Privacy Policy</a></li>
-                                <li><a href="#terms"> Terms of Service</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
-                                <li><a href="#support"> Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="address-grid col-lg-4 col-md-6 col-sm-7 mt-lg-0 mt-sm-5 mt-4 w3l-footer-16-main">
-                        <h5 class="top-bold">Subscribe Here</h5>
-                        <form action="#" class="subscribe d-flex mt-sm-4 mt-3 pt-lg-2 mb-4" method="post">
-                            <input type="email" name="email" placeholder="Email Address" required="">
-                            <button><span class="fa fa-paper-plane" aria-hidden="true"></span></button>
-                        </form>
-                        <p>Subscribe to our mailing list and get updates to your email inbox.</p>
-                    </div>
-                </div>
-                <!-- copyright -->
-                <div class="w3l-copyright text-center mt-lg-5 mt-4 pt-sm-4 pt-3">
-                    <p class="copy-footer-29">© 2024 Laundries. All rights reserved. Design by <a href="#"
-                            target="_blank">
-                            yassine</a></p>
-                </div>
+        @empty
+            <div class="col-md-12">
+                <h1>no recettes</h1>
             </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
-    </body>
+        @endforelse
+    </div>
+    </section> --}}
 
-    </html>
-@endsection
+
+    
+</x-master>

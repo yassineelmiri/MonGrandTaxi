@@ -22,13 +22,13 @@
     </div>
 </section>
 
-<h1>All Recettes</h1>
+<h1>All Taxi</h1>
 
 <div class="w3l-grids-block-5 py-5">
     <div class="container py-lg-5 py-md-4 py-2">
         <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-            <h5 class="sub-title">What We Offer</h5>
-            <h3 class="title-style">Our Reccets</h3>
+            <h5 >What We Offer</h5>
+            <h3 class="title-style">Our car</h3>
         </div>
         <div class="row text-center justify-content-center">
             @forelse ($recettes as $recette)
@@ -62,7 +62,7 @@
            
     @empty
     <div class="col-md-12">
-        <h1>no recettes</h1>
+        <h1>no car</h1>
     </div>
 @endforelse
 </div>
