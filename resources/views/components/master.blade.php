@@ -20,7 +20,7 @@
         </div>
     </header>
     <main>
-        <div class="container">
+        <div >
             <div class="row my-2">
                 @include('partials.flashbag')
             </div>

@@ -1,9 +1,9 @@
 <x-master title="Se connecter">
 
-    <main class="form-signin w-50  my-5 m-auto">
+    <main class="form-signin w-50  my-5 py-5 m-auto">
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h1 class="h3 mb-3 fw-normal">sign in</h1>
+            <h1 class="h3 mb-3 py-5 fw-normal">sign in</h1>
 
             <div class="form-floating my-2">
                 <input type="email" name="email" class="form-control h-50" placeholder="name@example.com">
