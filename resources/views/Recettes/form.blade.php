@@ -1,12 +1,14 @@
-<x-master title="Ajouter">
-
+<x-master title="ajouter">
+    @section('title', ($isUpdate ? 'Update' : 'Create') . ' Recettes')
     @php
         $route = route('recettes.store');
         if ($isUpdate) {
             $route = route('recettes.update', $recette);
         }
     @endphp
-    <div class="container mt-5 my-5 py-5" style="">
+
+
+    <div class="container mt-5" style="">
         <div class="row justify-content-center">
             <div class="col-md-6 form-wrapper">
                 <h2 class="mb-4 text-center">@yield('title')</h2>
@@ -52,5 +54,4 @@
             </div>
         </div>
     </div>
-
 </x-master>
