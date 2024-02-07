@@ -1,7 +1,7 @@
 @once
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand active" href="{{ route('homePage') }}"><span>MonGrand</span>Taxi<i
-                class="fas fa-hands-wash"></i></a>
+        <a class="navbar-brand active" href="{{ route('homePage') }}"><span>MonGrand</span>Taxi   <i
+                class="fas fa-taxi"></i></a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ route('add') }}">Add chefoure</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('profiles.index') }}">index</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('profiles.create') }}">Add passager</a>
@@ -18,11 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('show') }}">Dashboard</a>
                 </li>
-                
             </ul>
-
-
             <a class="btn btn-style" href="{{ route('login') }}">login</a>
+            {{-- <a class="btn btn-style" href="{{ route('profiles.create') }}">sing-up</a> --}}
         </div>
         <!-- toggle switch for light and dark theme -->
         <div class="cont-ser-position">

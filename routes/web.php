@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\homePageController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\RecettesController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +37,6 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/lagout', [LoginController::class, 'logout'])->name('login.logout');
 
 Route::resource(name:'recettes', controller: App\Http\Controllers\RecettesController::class);
-Route::resource('profiles',ProfilController::class);
+Route::resource('profiles',ProfileController::class);
 
 Route::resource('publication',PublicationController::class);

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
-class ProfilController extends Controller
+class ProfileController extends Controller
 {
     // public function __construct()
     // {
@@ -95,4 +95,3 @@ class ProfilController extends Controller
         }
     }
 }
-

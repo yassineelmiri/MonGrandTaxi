@@ -97,6 +97,16 @@
 
     <div class="w3l-grids-block-5 pb-5 pt-md-2 pt-4">
         <div class="container pb-lg-5 pb-md-4 pb-2">
+            <section class="w3l-breadcrumb py-lg-5">
+                <div class="container mb-5 mt-5">
+                    <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
+                        @csrf
+                        <input type="search" class="form-control px-4" name="search" id="search"
+                            placeholder="You can search at RECETTES here" />
+                        <button type="submit" class="btn btn-style mt-1">Search</button>
+                    </form>
+                </div>
+            </section>
             <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
                 <h5>What We Offer</h5>
                 <h3 class="title-style">Our taxi</h3>
@@ -174,7 +184,4 @@
         @endforelse
     </div>
     </section> --}}
-
-
-    
 </x-master>

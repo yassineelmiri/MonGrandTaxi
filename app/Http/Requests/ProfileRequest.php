@@ -23,6 +23,9 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'numero'=>'required',
+            'plaque'=>'required',
+            'type'=>'required',
             'email'=> 'required|email',
             'password'=>'required|min:9|max:10|confirmed',
             'bio'=>'required',

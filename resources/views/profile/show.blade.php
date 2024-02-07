@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <h3>Les recette</h3>
         <div class="row ">
             @foreach ($profile->publications as $publication)
@@ -22,6 +22,6 @@
             @endforeach
         </div>
 
-    </div>
+    </div> --}}
 
 </x-master>
