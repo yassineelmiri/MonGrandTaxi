@@ -13,13 +13,16 @@
                     <a class="nav-link" aria-current="page" href="{{ route('add') }}">Add chefoure</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ route('profiles.create') }}">Add passager</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('show') }}">Dashboard</a>
                 </li>
-                <li>
-                </li>
+                
             </ul>
-            <a class="btn btn-style" href="{{ route('login') }}">login</a>
 
+
+            <a class="btn btn-style" href="{{ route('login') }}">login</a>
         </div>
         <!-- toggle switch for light and dark theme -->
         <div class="cont-ser-position">
