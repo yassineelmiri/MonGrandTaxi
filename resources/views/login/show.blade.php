@@ -4,15 +4,14 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <h1 class="h3 mb-3 py-5 fw-normal">sign in</h1>
-
+            @error('email')
+                <span class="text-danger">
+                    {{ $message }}
+                </span>
+            @enderror
             <div class="form-floating my-2">
-                <input type="email" name="email" class="form-control h-50" placeholder="name@example.com">
-                <label>Email address</label>
-                @error('email')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
+                <input type="email" name="email" class="form-control" placeholder="name@example.com">
+                {{-- <label>Email address</label> --}}
             </div>
             <div class="form-floating my-2">
                 <input type="password" name="password" class="form-control" placeholder="Password">

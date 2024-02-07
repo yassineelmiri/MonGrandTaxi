@@ -40,7 +40,7 @@ class ProfileController extends Controller
     public function store(ProfileRequest $request)
     {
 
-
+       
         //validation 
         $formFields = $request->validated();
 
@@ -75,7 +75,7 @@ class ProfileController extends Controller
         $formFields = $request->validated();
         //Hash
         $formFields['password'] = Hash::make($request->password);
-        //insert image
+
         //insert image
         $this->uploadImage($request, $formFields);
 

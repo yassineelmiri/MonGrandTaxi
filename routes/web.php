@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\homePageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PassagerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\RecettesController;
@@ -38,5 +39,6 @@ Route::get('/lagout', [LoginController::class, 'logout'])->name('login.logout');
 
 Route::resource(name:'recettes', controller: App\Http\Controllers\RecettesController::class);
 Route::resource('profiles',ProfileController::class);
+Route::resource('Passager',PassagerController::class);
 
 Route::resource('publication',PublicationController::class);
