@@ -28,6 +28,10 @@ class Passager extends Model
     public function publications(){
         return $this->hasMany(Publication::class);
     }
+    public function Profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
 
     
 }

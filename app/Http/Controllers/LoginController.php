@@ -17,12 +17,14 @@ class LoginController extends Controller
         return view('login.show');
     }
     public function login(Request $request){
+      
+      
        $login = $request->email;
        $password = $request->password;
        $credentials = ['email' => $login , "password" => $password];
        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return to_route('homepage')->with('success','Vous étes bien connecté '.$login." .");
+            return to_route('Passager.index')->with('success','Vous étes bien connecté '.$login." .");
        }else{
             return back()->withErrors(['email'=>'Email ou mot de pass incorrect'
         ])->onlyInput('email');

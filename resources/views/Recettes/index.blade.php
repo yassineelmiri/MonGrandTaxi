@@ -1,172 +1,145 @@
-<x-master title="index taxi">
+<!DOCTYPE html>
+<html lang="en">
 
-    <section class="inner-banner py-5">
-        <div class="container pt-5 pb-sm-4 pb-2">
-            <h4 class="inner-text-title font-weight-bold pt-5">Dashboard</h4>
-            <ul class="breadcrumbs-custom-path">
-                <li><a href="index.html">Home</a></li>
-                <li class="active"><i class="fas fa-angle-right mx-2"></i>Dashboard</li>
-            </ul>
-        </div>
-    </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Dashbord</title>
+</head>
 
-    <section class="w3l-breadcrumb py-lg-5">
-        <div class="container mb-5 mt-5">
-            <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
-                @csrf
-                <input type="search" class="form-control px-4" name="search" id="search"
-                    placeholder="You can search at RECETTES here" />
-                <button type="submit" class="btn btn-style mt-1">Search</button>
-            </form>
-        </div>
-    </section>
+<body>
+    <div id="logo">
+        <span class="big-logo">.S!mple</span>
+        <span class="small-logo">S!M</span>
+    </div>
+    <div id="left-menu">
+        <ul>
+            <li class="active"><a href="#">
+                    <i class="ion-ios-albums-outline"></i>
+                    <span>Dashboard</span>
+                </a></li>
+            <li><a href="#">
+                    <i class="ion-ios-albums-outline"></i>
+                    <span>Users</span>
+                </a></li>
+            <li><a href="#">
+                    <i class="ion-ios-chatboxes-outline"></i>
+                    <span>Setting</span>
+                </a></li>
 
-    <h1>All Taxi</h1>
-
-    <div class="w3l-grids-block-5 py-5">
-        <div class="container py-lg-5 py-md-4 py-2">
-            <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-                <h5>What We Offer</h5>
-                <h3 class="title-style">Our car</h3>
+        </ul>
+    </div>
+    <div id="main-content">
+        <div id="header">
+            <div class="header-left float-left">
+                <i id="toggle-left-menu" class="ion-android-menu"></i>
             </div>
-            <main>
-                <h1 class="visually-hidden">Sidebars examples</h1>
-              
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-                  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                    <span class="fs-4">Sidebar</span>
-                  </a>
-                  <hr>
-                  <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link active" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                        Home
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        Orders
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                        Products
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                        Customers
-                      </a>
-                    </li>
-                  </ul>
-                  <hr>
-                  <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                      <strong>mdo</strong>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                      <li><a class="dropdown-item" href="#">New project...</a></li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Profile</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                  </div>
-                </div>
-            </main>
-            <div class="row text-center justify-content-center">
-                @forelse ($recettes as $recette)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="servicecard-single">
-                            <div class="grids5-info position-relative">
+            <div class="header-right float-right">
+                <i class="ion-ios-people"></i>
+            </div>
+        </div>
 
-                                <img src="storage/{{ $recette->image }}" alt="{{ $recette->image }}" class=""
-                                    height="400px">
+        <div id="page-container">
+            <div class="card">
+                <div class="title">Users</div>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
                             </div>
-                            <div class="content-main-top">
-                                <h4><a href="services.html">{{ $recette->name }}</a></h4>
-                                <p>{{ $recette->description }}</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <a class="btn btn-style mt-1"
-                                            href="{{ route('recettes.edit', $recette) }}">Edit</a>
-                                    </div>
-                                    <div class="col">
-                                        <form method="post" action="{{ route('recettes.destroy', $recette) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="submit" class="delete btn btn-style mt-1" value="Delete">
-                                        </form>
-                                    </div>
-                                    <div class="col">
-                                        <a class="btn btn-style mt-1"
-                                            href="{{ route('showOne', ['id' => $recette->id]) }}">Read More</a>
-                                    </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input id="html" type="checkbox" class="magic-checkbox">
+                                    <label for="html">HTML</label>
+
+                                    <input id="css" type="checkbox" class="magic-checkbox">
+                                    <label for="css">CSS</label>
+
+                                    <input id="js" type="checkbox" class="magic-checkbox">
+                                    <label for="js">Javascript</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input name="job" id="designer" type="radio" class="magic-radio">
+                                    <label for="designer">Web designer</label>
+
+                                    <input name="job" id="developer" type="radio" class="magic-radio">
+                                    <label for="developer">Web developer</label>
+
+                                    <input name="job" id="frontened" type="radio" class="magic-radio">
+                                    <label for="frontened">Frontened</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Languages</label>
+                                    <select name="" id="" class="form-control">
+                                        <option value="">HTML</option>
+                                        <option value="">CSS</option>
+                                        <option value="">JS</option>
+                                        <option value="">PHP</option>
+                                        <option value="">SQL</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="title">Users</div>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                @empty
-                    <div class="col-md-12">
-                        <h1>no car</h1>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </div>
-    </div>
-
-
-    {{-- 
-        @forelse ($recettes as $recette)
-
-        <div class="row text-center justify-content-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="servicecard-single">
-                    <div class="grids5-info position-relative">
-                        <img src="/storage/app/public/{{$recette->image}}" alt="{{$recette->image}}" class="img-fluid" />
-                    </div>
-                    <div class="content-main-top">
-                        <h4><a>{{$recette->name}}</a></h4>
-                        <p>{{$recette->description}} </p>
-                        <div class="row">
-                            <div class="col">
-                                <a class="btn btn-style mt-1" href="{{ route('recettes.edit', $recette) }}">Edit</a>
-                            </div>
-                            <div class="col">
-                                <form method="post" action="{{ route('recettes.destroy', $recette) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="delete btn btn-style mt-1" value="Delete">
-                                </form>
-                            </div>
-                            <div class="col">
-                                <a class="btn btn-style mt-1" href="{{ route('showOne', ['id' => $recette->id]) }}">Read More</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        @empty
-        <div class="col-md-12">
-            <h1>no recettes</h1>
-        </div>
-        @endforelse
-    </div>
-</div> --}}
 
-</x-master>
+
+
+
+
+
+        </div>
+    </div>
+
+    <span id="show-lable">Hello</span>
+    <script src="/assets/js/script.js"></script>
+
+</body>
+
+</html>

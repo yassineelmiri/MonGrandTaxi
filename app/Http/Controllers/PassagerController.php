@@ -18,7 +18,7 @@ class PassagerController extends Controller
     public function index()
     {
         $passagers = Passager::latest()->paginate(3);
-        return view('passager.index', compact('passagers'));
+        return view('welcome', compact('passagers'));
     }
 
     /**

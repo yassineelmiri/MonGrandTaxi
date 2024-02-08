@@ -28,4 +28,8 @@ class Profile extends Model
     public function publications(){
         return $this->hasMany(Publication::class);
     }
+    public function passagers()
+    {
+        return $this->hasMany(Passager::class);
+    }
 }

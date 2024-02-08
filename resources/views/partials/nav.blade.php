@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('show') }}">Dashboard</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login.logout') }}">Déconnection</a>
+                </li>
             </ul>
             <a class="btn btn-style" href="{{ route('login') }}">login</a>
             {{-- <a class="btn btn-style" href="{{ route('profiles.create') }}">sing-up</a> --}}

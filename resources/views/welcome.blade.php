@@ -24,7 +24,7 @@
             <div class="col-lg-9 text-center">
                 <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
                     @csrf
-                <input type="search" class="form-control px-4" name="search" id="search" placeholder="You can search at RECETTES here" />
+                <input type="search" class="form-control px-4" name="search" id="search" placeholder="You can search at passagers here" />
                 <button type="submit"  class="btn btn-primary">Search</button>
                 </form>
             </div>
@@ -102,7 +102,7 @@
                     <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
                         @csrf
                         <input type="search" class="form-control px-4" name="search" id="search"
-                            placeholder="You can search at RECETTES here" />
+                            placeholder="You can search at passagers here" />
                         <button type="submit" class="btn btn-style mt-1">Search</button>
                     </form>
                 </div>
@@ -111,30 +111,33 @@
                 <h5>What We Offer</h5>
                 <h3 class="title-style">Our taxi</h3>
             </div>
-            <div class="row text-center justify-content-center">
-                @forelse ($recettes as $recette)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="servicecard-single">
-                            <div class="grids5-info position-relative">
+            @auth
+                <div class="row text-center justify-content-center">
+                    @forelse ($passagers as $passager)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="servicecard-single">
+                                <div class="grids5-info position-relative">
 
-                                <img src="storage/{{ $recette->image }}" alt="{{ $recette->image }}" class=""
-                                    height="400px">
-                            </div>
-                            <div class="content-main-top">
-                                <h4><a href="services.html">{{ $recette->name }}</a></h4>
-                                <p>{{ $recette->description }}</p>
-                                <a class="btn btn-style mt-4" href="{{ route('showOne', ['id' => $recette->id]) }}">Read
-                                    More</a>
+                                    <img src="storage/{{ $passager->image }}" alt="{{ $passager->image }}" class=""
+                                        height="400px">
+                                </div>
+                                <div class="content-main-top">
+                                    <h4><a href="services.html">{{ $passager->name }}</a></h4>
+                                    <p>{{ $passager->description }}</p>
+                                    <a class="btn btn-style mt-4"
+                                        href="{{ route('showOne', ['id' => $passager->id]) }}">Read
+                                        More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                @empty
-                    <div class="col-md-12">
-                        <h1>no care</h1>
-                    </div>
-                @endforelse
-            </div>
+                    @empty
+                        <div class="col-md-12">
+                            <h1>no care</h1>
+                        </div>
+                    @endforelse
+                </div>
+            @endauth
         </div>
     </div>
     </div>
@@ -162,24 +165,24 @@
     <h1 class="mx-5 mb-5 kilua">LAST RACETTES:</h1>
 
     <div class="row">
-        @forelse ($recettes as $recette)
+        @forelse ($passagers as $passager)
             <div class="col-md-4 mb-4 wikis">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{$recette->name}}</h5>
-                        <img src="/storage/{{$recette->image}}" alt="{{$recette->image}}" class="img-fluid w-100 rounded-3">
-                        <p class="card-text">{{$recette->description}}<br></p>
+                        <h5 class="card-title">{{$passager->name}}</h5>
+                        <img src="/storage/{{$passager->image}}" alt="{{$passager->image}}" class="img-fluid w-100 rounded-3">
+                        <p class="card-text">{{$passager->description}}<br></p>
                         <p class="card-text">choumicha</p>
                         <div class="specs"></div>
                         <div class="card-footer">
-                            <a class="showw " href="{{ route('showOne', ['id' => $recette->id]) }}">Show</a>
+                            <a class="showw " href="{{ route('showOne', ['id' => $passager->id]) }}">Show</a>
                         </div>
                     </div>
                 </div>
             </div>
         @empty
             <div class="col-md-12">
-                <h1>no recettes</h1>
+                <h1>no passagers</h1>
             </div>
         @endforelse
     </div>
