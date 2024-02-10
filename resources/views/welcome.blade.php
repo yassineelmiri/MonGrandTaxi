@@ -107,7 +107,7 @@
                     </form>
                 </div>
             </section>
-            <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
+            {{-- <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
                 <h5>What We Offer</h5>
                 <h3 class="title-style">Our taxi</h3>
             </div>
@@ -137,7 +137,7 @@
                         </div>
                     @endforelse
                 </div>
-            @endauth
+            @endauth --}}
         </div>
     </div>
     </div>

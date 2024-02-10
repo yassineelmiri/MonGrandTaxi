@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->integer('numero');
-            $table->string('plaque');
+            $table->string('role');
             $table->string('password');
             $table->string('type');
             $table->string('bio',250);

@@ -12,28 +12,43 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-  
-    public function show(){
+
+    public function show()
+    {
         return view('login.show');
     }
-    public function login(Request $request){
-      
-      
-       $login = $request->email;
-       $password = $request->password;
-       $credentials = ['email' => $login , "password" => $password];
-       if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return to_route('Passager.index')->with('success','Vous étes bien connecté '.$login." .");
-       }else{
-            return back()->withErrors(['email'=>'Email ou mot de pass incorrect'
-        ])->onlyInput('email');
-       }
 
+    public function login(Request $request)
+    {
+        $login = $request->email;
+        $password = $request->password;
+        $credentials = ['email' => $login, 'password' => $password];
+        if (Auth::attempt($credentials)) {
+            switch (auth()->user()->role) {
+                case auth()->user()->role === "passager":
+                    $request->session()->regenerate();
+                    return redirect()->route('homePage')->with('success', 'Vous êtes bien connecté ' . $login . ".");
+                    break;
+                case 'cheffeur':
+                    $request->session()->regenerate();
+                    return redirect()->route('profiles.index')->with('success', 'Vous êtes bien connecté ' . $login . ".");
+                    break;
+                default:
+                    return back()->withErrors([
+                        'email' => 'Email ou mot de passe incorrect'
+                    ])->onlyInput('email');
+            }
+        } else {
+            return back()->withErrors([
+                'email' => 'Email ou mot de passe incorrect'
+            ])->onlyInput('email');
+        }
     }
-    public function logout(){
+
+    public function logout()
+    {
         Session::flush();
         Auth::logout();
-        return to_route('login.show')->with('success','Vous étes bien déconnecté.');
+        return to_route('login.show')->with('success', 'Vous étes bien déconnecté.');
     }
 }

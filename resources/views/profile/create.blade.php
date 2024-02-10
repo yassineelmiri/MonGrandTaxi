@@ -11,7 +11,7 @@
                 </ul>
             </x-alert>
         @endif
-        <button id="toggleFormButton" class="btn btn-secondary mt-3">Ajouter Chauffeur</button>
+        {{-- <button id="toggleFormButton" class="btn btn-secondary mt-3">Ajouter Chauffeur</button> --}}
         <div id="form1">
             <form method="POST" action="{{ route('profiles.store') }}" enctype="multipart/form-data" class="row bg-light">
                 @csrf
@@ -28,9 +28,12 @@
                     <input type="number" name="numero" class="form-control" value="{{ old('numero') }}" />
                 </div>
                 <div class="mb-3 col-6">
-                    <label class="form-label">Plaque D'immatricule</label>
-                    <input type="text" name="plaque" class="form-control" value="{{ old('numero') }}"
-                        placeholder="00-A-0000" />
+                    <label class="form-label">role</label>
+                    <select class="form-control" name="role" required>
+                        <option value="{{ old('role') }}">Select role</option>
+                        <option value="passager">passager</option>
+                        <option value="cheffeur">cheffeur</option>
+                    </select>
                 </div>
                 <div class="mb-3 col-6">
                     <label class="form-label">Mot de passe</label>
@@ -60,7 +63,7 @@
             </form>
         </div>
 
-        <div id="form2" style="display: none;">
+        {{-- <div id="form2" style="display: none;">
             <form method="POST" action="{{ route('Passager.store')  }}" enctype="multipart/form-data"
                 class="row bg-light">
                 @csrf
@@ -107,7 +110,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
     <script>
         // Fonction pour basculer entre les formulaires
         document.getElementById('toggleFormButton').addEventListener('click', function() {

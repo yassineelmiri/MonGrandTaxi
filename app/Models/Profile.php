@@ -16,7 +16,7 @@ class Profile extends Model
         'name',
         'email',
         'numero',
-        'plaque',
+        'role',
         'password',
         'type',
         'bio',
