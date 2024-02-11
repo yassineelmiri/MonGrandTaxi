@@ -25,9 +25,9 @@ class LoginController extends Controller
         $credentials = ['email' => $login, 'password' => $password];
         if (Auth::attempt($credentials)) {
             switch (auth()->user()->role) {
-                case auth()->user()->role === "passager":
+                case "passager":
                     $request->session()->regenerate();
-                    return redirect()->route('homePage')->with('success', 'Vous êtes bien connecté ' . $login . ".");
+                    return redirect()->route('publications.index')->with('success', 'Vous êtes bien connecté ' . $login . ".");
                     break;
                 case 'cheffeur':
                     $request->session()->regenerate();

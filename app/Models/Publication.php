@@ -11,15 +11,22 @@ class Publication extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $date = ['created_at'];
     protected $fillable = [
-        'titer',
+
+        'date',
         'body',
-        'image',
+        'lieu1',
+        'lieu2',
+        'prix',
         'profile_id'
     ];
-    public function profile(){
-       return $this->belongsTo(Profile::class);
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
     }
 
+    public function publications(){
+        return $this->hasMany(Publication::class);
+    }
 }

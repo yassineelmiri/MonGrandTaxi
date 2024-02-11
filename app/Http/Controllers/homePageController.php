@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Publication;
 use Illuminate\Http\Request;
 use App\Models\recettes;
 
@@ -10,9 +11,9 @@ class homePageController extends Controller
     //
     public function index()
     {
-        //
-        $recettes = recettes::all(); 
-        return view('welcome', compact('recettes'));
+        $publications = Publication::latest()->paginate(3);
+        // $recettes = recettes::all(); 
+        return view('welcome', compact('publications'));
     }
     // public function recipes_for_search(Request $request) {
     //     $search = $request->search;

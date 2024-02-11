@@ -3,8 +3,8 @@
         @auth
             @if ($canUpdate === true)
                 <a class="float-end btn btn-primary btn-sm"
-                    href="{{ route('publication.edit', $publication->id) }}">Modifier</a>
-                <form action="{{ route('publication.destroy', $publication->id) }}" method="post">
+                    href="{{ route('publications.edit', $publication->id) }}">Modifier</a>
+                <form action="{{ route('publications.destroy', $publication->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button onclick="return confirm('Vouler vous vraiment supprimer la recette')"
@@ -25,15 +25,15 @@
             </div>
             <hr>
            <div class="col">
-                <h5>{{ $publication->titer }}</h5>
+                <h5>Débart :  {{ $publication->lieu1 }} to --> {{ $publication->lieu2 }} </h5>
                 <p> {{ $publication->body }}</p>
-                @if (!is_null($publication->image))
+    
                     <footer class="blockquote-footer">
-                        <img class="img-fluid" src="{{ asset('storage/' . $publication->image) }}" alt="image">
                         <br>
-                        <cite title="Source title">{{ $publication->created_at->format('d-m-Y') }}</cite>
+                        <p title="Source title">{{ $publication->prix}}Dhs</p>
+
+                        <p title="Source title">{{ $publication->created_at->format('d-m-Y') }}</p>
                     </footer>
-                @endif
             </div>
 
         </blockquote>

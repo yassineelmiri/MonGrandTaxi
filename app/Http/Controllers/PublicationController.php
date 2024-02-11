@@ -34,10 +34,10 @@ class PublicationController extends Controller
     {
 
         $formFields = $request->validated();
-        $this->uploadImage($request, $formFields);
+        
         $formFields['profile_id'] = Auth::id();
         Publication::create($formFields);
-        return to_route('publication.index')->with('success', 'votre recette a été bien create .');
+        return to_route('publications.index')->with('success', 'votre recette a été bien create .');
 
     }
     private function uploadImage(PublicationRequest $request, array &$formFields)
@@ -73,7 +73,7 @@ class PublicationController extends Controller
         $formFields = $request->validated();
         $this->uploadImage($request, $formFields);
         $publication->fill($formFields)->save();
-        return to_route('publication.index')->with('success', 'votre recette a été bien modifier .');
+        return to_route('publications.index')->with('success', 'votre recette a été bien modifier .');
 
     }
 
@@ -83,14 +83,14 @@ class PublicationController extends Controller
     public function destroy(Publication $publication)
     {
         $publication->delete();
-        return to_route('publication.index')->with('success', 'votre recette a été bien supprimer .');
+        return to_route('publications.index')->with('success', 'votre recette a été bien supprimer .');
 
 
     }
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $publications = Publication::where('titer', 'LIKE', "%$search%")->paginate(3);
+        $publications = Publication::where('lieu1', 'LIKE', "%$search%")->paginate(3);
 
         return view('publication.index', compact('publications'));
     }

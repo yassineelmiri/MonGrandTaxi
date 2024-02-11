@@ -57,7 +57,7 @@
                 </div>
                 <div class="d-grid my-2">
                     <button type="submit" class="btn btn-primary btn-block">
-                        Ajouter Chauffeur
+                        Ajouter
                     </button>
                 </div>
             </form>

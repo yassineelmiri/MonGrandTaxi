@@ -1,12 +1,12 @@
 <x-master title="Publication">
     <div class="text-center">
-        <h3>LES RECETTE</h3>
-        <form class="d-flex justify-content-center" action="{{ route('publication.search') }}" method="GET">
+        <h3>LES Publication</h3>
+        <form class="d-flex justify-content-center" action="{{ route('publications.search') }}" method="GET">
             <input type="text" name="search" placeholder="Entre un nom de recette" class="form-control me-2">
             <button type="submit" class="btn btn-primary">Rechercher</button>
         </form>
         
-        <a class="btn btn-primary mt-5" href="{{ route('publication.create') }}">Créer nouvelle recette</a>
+        <a class="btn btn-primary mt-5" href="{{ route('publications.create') }}">Créer nouvelle recette</a>
     </div>
 
     <div class="container w-75 mx-auto mt-5">

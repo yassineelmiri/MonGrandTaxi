@@ -22,9 +22,11 @@ class PublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titer'=>'required',
+            'date'=>'required',
             'body'=>'required',
-            'image'=>'required|image|mimes:png,jpg,jpeg,svg'
+            'lieu1'=>'required',
+            'lieu2'=>'required',
+            'prix'=>'required',
 
 
         ];

@@ -30,6 +30,7 @@ Route::post('/search', [RecettesController::class, 'recipes_for_search'])->name(
 
 Route::get('/showOne/{id}', [RecettesController::class, 'showOne'])->name('showOne');
 
+Route::get('/publications/search', [PublicationController::class, 'search'])->name('publications.search');
 
 
 
@@ -37,8 +38,8 @@ Route::get('/login', [LoginController::class, 'show'])->name('login.show');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/lagout', [LoginController::class, 'logout'])->name('login.logout');
 
-Route::resource(name:'recettes', controller: App\Http\Controllers\RecettesController::class);
+// Route::resource(name:'recettes', controller: App\Http\Controllers\RecettesController::class);
 Route::resource('profiles',ProfileController::class);
 Route::resource('Passager',PassagerController::class);
 
-Route::resource('publication',PublicationController::class);
+Route::resource('publications',PublicationController::class);
