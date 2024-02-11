@@ -18,7 +18,7 @@
                 <label>Password</label>
             </div>
 
-            <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+            <button class="btn btn-style w-100 py-2" type="submit">Sign in</button>
         </form>
         <p><a href="{{ route('profiles.create') }}">sing-up</a></p>
 

@@ -44,10 +44,6 @@
                     <input type="password" name="password_confirmation" class="form-control" />
                 </div>
                 <div class="mb-3 col-6">
-                    <label class="form-label">Type de véhicule</label>
-                    <input type="text" name="type" class="form-control" value="{{ old('numero') }}" />
-                </div>
-                <div class="mb-3 col-6">
                     <label class="form-label">Description</label>
                     <textarea type="text" name="bio" class="form-control">{{ old('bio') }}</textarea>
                 </div>
@@ -56,7 +52,7 @@
                     <input type="file" name="image" class="form-control" />
                 </div>
                 <div class="d-grid my-2">
-                    <button type="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-style btn-block">
                         Ajouter
                     </button>
                 </div>

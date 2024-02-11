@@ -8,16 +8,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('profiles.index') }}">index</a>
-                </li>
+                </li> --}}
                 @auth
-                    <li class="nav-item">
+                    @if (auth()->user()->role === 'passager')
+                        <li class="nav-item">
+                            <a class="btn nav-link" href="{{ route('publications.create') }}">Créer nouvelle passage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('profiles.show', auth()->user()->id) }}" class="btn nav-link">Profile passager</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="btn nav-link" href="{{ route('chauffeurs.create') }}">Créer nouvelle voiture</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('profiles.show', auth()->user()->id) }}" class="btn nav-link">Profile chauffeurs</a>
+                        </li>
+                    @endif
+                    {{-- <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ route('profiles.create') }}">Add passager</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('show') }}">Dashboard</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login.logout') }}">Déconnection</a>
                     </li>

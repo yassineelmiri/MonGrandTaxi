@@ -112,7 +112,6 @@
                             <button type="submit" class="btn btn-primary">Rechercher</button>
                         </form>
 
-                        <a class="btn btn-primary mt-5" href="{{ route('publications.create') }}">Créer nouvelle passage</a>
                     </div>
 
                     <div class="container w-75 mx-auto mt-5">

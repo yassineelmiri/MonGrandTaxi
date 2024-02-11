@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChauffeursController;
 use App\Http\Controllers\homePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PassagerController;
@@ -41,5 +42,6 @@ Route::get('/lagout', [LoginController::class, 'logout'])->name('login.logout');
 // Route::resource(name:'recettes', controller: App\Http\Controllers\RecettesController::class);
 Route::resource('profiles',ProfileController::class);
 Route::resource('Passager',PassagerController::class);
+Route::resource('chauffeurs',ChauffeursController::class);
 
 Route::resource('publications',PublicationController::class);
