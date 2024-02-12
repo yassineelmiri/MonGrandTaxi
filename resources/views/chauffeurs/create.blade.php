@@ -13,7 +13,7 @@
             </x-alert>
         @endif
 
-        <form method="POST" action="{{ route('publications.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('chauffeurs.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label class="form-label">Name Voiture</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Type véhicule</label>
-                <input type="text" name="type" class="form-control" />
+                <input type="number" name="type" class="form-control" />
                 @error('type')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -45,7 +45,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">numéro de plaque d'immatriculation</label>
-                <input type="number" name="plaque" class="form-control"/>
+                <input type="text" name="plaque" class="form-control" placeholder="00 A 0000"/>
                 @error('plaque')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror

@@ -14,17 +14,19 @@
                 @auth
                     @if (auth()->user()->role === 'passager')
                         <li class="nav-item">
-                            <a class="btn nav-link" href="{{ route('publications.create') }}">Créer nouvelle passage</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('profiles.show', auth()->user()->id) }}" class="btn nav-link">Profile passager</a>
                         </li>
                     @else
                         <li class="nav-item">
+                            <a class="btn nav-link" href="{{ route('publications.create') }}">Créer une passage</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="btn nav-link" href="{{ route('chauffeurs.create') }}">Créer nouvelle voiture</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('profiles.show', auth()->user()->id) }}" class="btn nav-link">Profile chauffeurs</a>
+                            <a href="{{ route('profiles.show', auth()->user()->id) }}" class="btn nav-link">Profile
+                                chauffeurs</a>
                         </li>
                     @endif
                     {{-- <li class="nav-item">

@@ -1,4 +1,5 @@
 <x-master title="Profiles">
+    <div class="container my-5 py-5">
 
     <h3>Profiles</h3>
     
@@ -9,5 +10,5 @@
         @endforeach
     </div>
     {{ $profiles->links() }}
-
+    </div>
 </x-master>

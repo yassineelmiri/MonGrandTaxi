@@ -1,4 +1,5 @@
 <x-master title="Profiles">
+    <div class="container my-5 py-5">
     <h3>Profiles</h3>
     <div class="container-fluid">
         <div class="row">
@@ -23,5 +24,6 @@
         </div>
 
     </div> --}}
+    </div>
 
 </x-master>

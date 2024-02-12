@@ -43,6 +43,20 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+            {{-- <div class="mb-3 col-6">
+                <label class="form-label">chauffeur</label>
+                <select class="form-control" name="cheffeur" required>
+                    <option value="{{ old('role') }}">Select chauffeur</option>
+                    @foreach ($profiles as $profile)
+                        @if ($profile->role === 'cheffeur')
+                            <option  value="{{$profile->id}}">{{ $profile->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @error('cheffeur')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div> --}}
             <div class="mb-3">
                 <label class="form-label">Prix</label>
                 <input type="range" min="0" max="1000" value="0" name="prix" class="form-control"

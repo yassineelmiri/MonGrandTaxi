@@ -1,4 +1,5 @@
 <x-master title="Mon Profile">
+    <div class="container my-5 py-5">
 
     <h3>Modifier Profiles</h3>
     @if ($errors->any())
@@ -47,6 +48,6 @@
     </form>
 
 
-
+    </div>
 
 </x-master>

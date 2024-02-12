@@ -99,12 +99,12 @@
         <div class="container pb-lg-5 pb-md-4 pb-2">
             <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
                 <h5>What We Offer</h5>
-                <h3 class="title-style">Les dernier passager</h3>
+                <h3 class="title-style">Les dernier Vouyage</h3>
             </div>
             @auth
               
                     <div class="text-center">
-                        <h3>LES PASSAGER</h3>
+                        <h3>LES CHAUFFEUR</h3>
                         <form class="d-flex justify-content-center" action="{{ route('publications.search') }}"
                             method="GET">
                             <input type="text" name="search" placeholder="Entre un nom de lieu"
@@ -114,8 +114,8 @@
 
                     </div>
 
-                    <div class="container w-75 mx-auto mt-5">
-                        <div class="row">
+                    <div class="container mt-5 ">
+                        <div class="row justify-content-md-center">
                             @foreach ($publications as $publication)
                                 <x-publication :canUpdate="auth()->user()->id === $publication->profile_id" :publication="$publication" />
                             @endforeach

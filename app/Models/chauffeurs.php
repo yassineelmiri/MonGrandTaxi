@@ -18,7 +18,8 @@ class chauffeurs extends Model
         'type',
         'body',
         'plaque',
-        'image'
+        'image',
+        'profile_id'
 
     ];
     public function getImageAttribute($value){

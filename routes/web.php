@@ -22,15 +22,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [homePageController::class, 'index'])->name('homePage');
-
-Route::get('/show', [RecettesController::class, 'index'])->name('show');
-
-Route::get('/add', [RecettesController::class, 'create'])->name('add');
-
-Route::post('/search', [RecettesController::class, 'recipes_for_search'])->name('search');
-
-Route::get('/showOne/{id}', [RecettesController::class, 'showOne'])->name('showOne');
-
 Route::get('/publications/search', [PublicationController::class, 'search'])->name('publications.search');
 
 
