@@ -33,6 +33,10 @@ class LoginController extends Controller
                     $request->session()->regenerate();
                     return redirect()->route('profiles.index')->with('success', 'Vous êtes bien connecté ' . $login . ".");
                     break;
+                case 'admin':
+                    $request->session()->regenerate();
+                    return redirect()->route('admin.index')->with('success', 'Vous êtes bien connecté ' . $login . ".");
+                    break;
                 default:
                     return back()->withErrors([
                         'email' => 'Email ou mot de passe incorrect'

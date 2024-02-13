@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Profile;
 
-class CategoryController extends Controller
+
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-       
-        // dd($categories);
+        return view('admin.index');
+    }
+    public function user()
+    {
+        $profiles = Profile::all();
+        return view('admin.user', compact('profiles'));
     }
 
     /**
@@ -36,7 +42,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(category $category)
+    public function show(Admin $admin)
     {
         //
     }
@@ -44,7 +50,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(category $category)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -52,7 +58,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -60,7 +66,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(category $category)
+    public function destroy(Admin $admin)
     {
         //
     }

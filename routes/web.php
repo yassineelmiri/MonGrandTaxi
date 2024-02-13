@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PassagerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController;
-use App\Http\Controllers\RecettesController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,9 +30,11 @@ Route::get('/login', [LoginController::class, 'show'])->name('login.show');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/lagout', [LoginController::class, 'logout'])->name('login.logout');
 
-// Route::resource(name:'recettes', controller: App\Http\Controllers\RecettesController::class);
-Route::resource('profiles',ProfileController::class);
-Route::resource('Passager',PassagerController::class);
-Route::resource('chauffeurs',ChauffeursController::class);
+Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 
-Route::resource('publications',PublicationController::class);
+Route::resource('admin', AdminController::class);
+Route::resource('profiles', ProfileController::class);
+Route::resource('Passager', PassagerController::class);
+Route::resource('chauffeurs', ChauffeursController::class);
+
+Route::resource('publications', PublicationController::class);
