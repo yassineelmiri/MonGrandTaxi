@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
+use App\Models\chauffeurs;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -21,7 +22,9 @@ class ProfileController extends Controller
         $profiles = Profile::paginate(9);
         return view('profile.index', compact('profiles'));
     }
-    public function show(Profile $profile)
+    
+
+    public function show(Profile $profile,chauffeurs $chauffeurs)
     {
         // $id = $request->id;
 
@@ -30,7 +33,9 @@ class ProfileController extends Controller
         //     return abort(404);
         // }
 
-        return view('profile.show', compact('profile'));
+        $chauffeurs = chauffeurs::all();
+
+        return view('profile.show', compact('profile','chauffeurs'));
     }
 
     public function create()

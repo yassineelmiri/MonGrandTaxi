@@ -14,7 +14,7 @@
         @endauth
         <blockquote class="blockquote mb-0">
             <div class="container bg-lenght">
-                <div class="col-md-4">
+                <div class="">
                     <div class="position-relative">
                         <img class="rounded-circle" src="{{ asset('storage/' . $publication->profile->image) }}"
                             width="100px" alt="image">
