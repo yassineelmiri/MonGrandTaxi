@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Http\Requests\AdminRequest;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class AdminController extends Controller
@@ -34,9 +38,14 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
-        //
+        $formFields = $request->validated();
+        $formFields['profile_id']= Auth::id();
+        $formFields['chauffeur_id']= $request->chauffeur_id;
+        Admin::create($formFields);
+        return view('publication.create');
+
     }
 
     /**

@@ -104,7 +104,7 @@
             @auth
               
                     <div class="text-center">
-                        <h3>LES CHAUFFEUR</h3>
+                        <h3>LES VOUYAGE</h3>
                         <form class="d-flex justify-content-center" action="{{ route('publications.search') }}"
                             method="GET">
                             <input type="text" name="search" placeholder="Entre un nom de lieu"

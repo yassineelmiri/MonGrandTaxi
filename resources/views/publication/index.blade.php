@@ -11,8 +11,8 @@
         <a class="btn btn-primary mt-5" href="{{ route('publications.create') }}">Créer nouvelle passager</a>
     </div>
 
-    <div class="container row mx-auto mt-5">
-        <div class="col-3">
+    <div class="container mx-auto mt-5">
+        <div class="row">
             @foreach ($publications as $publication)
                 <x-publication :canUpdate="auth()->user()->id === $publication->profile_id" :publication="$publication" />
             @endforeach

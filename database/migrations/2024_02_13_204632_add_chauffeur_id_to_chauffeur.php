@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('chauffeurs', function (Blueprint $table) {
-            $table->unsignedBigInteger('profile_id');
-            $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
+        Schema::table('admins', function (Blueprint $table) {
+            $table->unsignedBigInteger('chauffeur_id');
+            $table->foreign('chauffeur_id')->references('id')->on('chauffeurs')->cascadeOnDelete();
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('chauffeurs', function (Blueprint $table) {
-            $table->dropColumn('profile_id');
+        Schema::table('admins', function (Blueprint $table) {
+            $table->dropColumn('chauffeur_id');
 
         });
     }
