@@ -36,6 +36,12 @@
             <label for="" class="form-label">Description</label>
             <textarea type="text" name="bio" class="form-control">{{ old('name', $profile->bio) }}</textarea>
         </div>
+        <div type="hidden">
+            <input type="hidden" name="numero" class="form-control" value="{{ old('numero', $profile->numero) }}" />
+        </div>
+        <div type="hidden">
+            <input type="hidden" name="role" class="form-control" value="{{ old('role', $profile->role) }}" />
+        </div>
         <div class="mb-3">
             <label class="form-label">images</label>
             <input type="file" name="image" class="form-control" />

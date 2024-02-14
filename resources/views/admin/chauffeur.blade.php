@@ -101,47 +101,50 @@
 
             <table class="w-full bg-gray-500 py-2 px-2 rounded display" id="example" class="display">
                 <thead class="bg-[#000] text-white border-2 border-[#000]">
-                    <tr>                        <td class="py-4 px-2">Id</td>
-
-                        <td class="py-4 px-2">Picture</td>
-                        <td class="py-4 px-2">firstName</td>
-                        <td class="py-4 px-2">role</td>
-                        <td class="py-4 px-2">Email</td>
-                        <td class="py-4 px-2">numero telephone</td>
-                        <td class="py-4 px-2">date de creation</td>
+                    <tr>
+                       
+                        <td class="py-4 px-2">Id</td>
+                        <td class="py-4 px-2">image</td>
+                        <td class="py-4 px-2">Name</td>
+                        <td class="py-4 px-2">Model</td>
+                        <td class="py-4 px-2">Nomber de place</td>
+                        <td class="py-4 px-2">Description</td>
+                        <td class="py-4 px-2">plaque</td>
+                        <td class="py-4 px-2">chauffeur</td>
                         <td class="py-4 px-2">Actions</td>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach ($profiles as $profile)
-                        
+                    @foreach ($chauffeurs as $chauffeur)
                         <tr class='border-2 border-[#000]'>
-                            <td class='py-2 px-2 border-2 border-[#000]'>#{{ $profile->id }}
+                            <td class='py-2 px-2 border-2 border-[#000]'>#{{ $chauffeur->id }}
                             </td>
                             <td class='py-2 px-2'>
                                 <div class='hw-[100%] rounded relative flex justify-center'><img width='10%'
                                         class='w-[80px]'><img class="rounded-circle"
-                                        src="{{ asset('storage/' . $profile->image) }}" alt="image">
+                                        src="{{ asset('storage/' . $chauffeur->image) }}" alt="image">
                                 </div>
                             </td>
 
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $profile->name }}
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->name }}
                             </td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $profile->role }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $profile->email }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>0{{ $profile->numero }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $profile->created_at }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->model }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->type }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->body }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->plaque }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->profile_id }}</td>
+
                             <td class='py-2 px-2 border-2 border-[#000]'>
                                 <div class="card-foot border-top px-3 py-3 bg-light" style="z-index: 9">
-                                    <form action="{{ route('profiles.destroy', $profile->id) }}" method="POST">
+                                    <form action="{{ route('chauffeurs.destroy', $chauffeur->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button
                                             class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70'
                                             style='transition-duration: 0.5s;'>Supprimer</button>
                                     </form>
-                                    <form action="{{ route('profiles.edit', $profile->id) }}">
+                                    <form action="{{ route('chauffeurs.edit', $chauffeur->id) }}">
                                         @csrf
                                         <button
                                             class='bg-blue-500 text-white rounded px-4 py-2 border-2 border-blue-500 hover:bg-bleu-500/70'

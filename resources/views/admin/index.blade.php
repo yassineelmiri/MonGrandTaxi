@@ -45,7 +45,7 @@
                 <li>
                     <h1
                         class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                        <a href="/Wiki/Admin/admins" class="hidden lg:block">Admins</a>
+                        <a href="{{ route('admin.chauffeur') }}" class="hidden lg:block">chauffeur</a>
                     </h1>
                 </li>
 
@@ -95,50 +95,41 @@
             <div>
                 <h1 class="text-md md:text-xl lg:text-3xl font-[800] mb-8">ADMIN / Dashboard</h1>
                 <div class="w-full bg-[#4C4B96ff] border-2 border-blue-900 rounded py-8 px-4">
-                    <h1 class="text-md md:text-xl lg:text-xl font-[500]">Bonjour Mr : <u class="px-4">
-                            
+                    <h1 class="text-md md:text-xl lg:text-xl font-[500]">Bonjour Mr : {{auth()->user()->name}} <u class="px-4">
                         </u></h1>
                 </div>
             </div>
             <!-- Page COntent -->
             <!-- <h1 class="mt-8 font-[800] text-md md:text-xl lg:text-2xl mb-2" >Wiki Statistic </h1> -->
-            <div class="mt-8  flex flex-wrap justify-between gap-4">
+            <div class="mt-8  flex flex-wrap justify-between gap-3">
 
-                <div class="w-[30%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
+                <div class="w-[20%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
                     <h1 class="font-[900] text-md md:text-2xl">
-                    
+                    {{$count}}Dhs
                     </h1>
-                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/users">Wiki Users</a></h1>
+                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/users">Capitale</a></h1>
                 </div>
 
-                <div class="w-[30%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
+                <div class="w-[20%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
                     <h1 class="font-[900] text-md md:text-2xl">
+                        {{ $count3 }}
                     </h1>
-                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/users">Admins</a></h1>
+                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/users">user</a></h1>
                 </div>
 
 
-                <div class="w-[30%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
+                <div class="w-[20%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
                     <h1 class="font-[900] text-md md:text-2xl">
+                        {{ $count1 }}
                     </h1>
-                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/categories">Categories</a></h1>
+                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/categories">Voiture</a></h1>
                 </div>
 
-                <div class="w-[30%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
+                <div class="w-[20%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
                     <h1 class="font-[900] text-md md:text-2xl">
+                        {{ $count2}}
                     </h1>
-                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/tags">Tags</a></h1>
-                </div>
-                <div class="w-[30%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
-                    <h1 class="font-[900] text-md md:text-2xl">
-                    </h1>
-                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/users">Archive</a></h1>
-                </div>
-
-                <div class="w-[100%] md:w-[30%] bg-[#4A5EA3ff] rounded-full p-8 border-2 border-blue-800 text-center">
-                    <h1 class="font-[900] text-md md:text-2xl">
-                    </h1>
-                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/wikis">Wikis Writed</a></h1>
+                    <h1 class="font-[900] text-md md:text-2xl mt-2"><a href="/Wiki/Admin/tags">Passager</a></h1>
                 </div>
 
             </div>

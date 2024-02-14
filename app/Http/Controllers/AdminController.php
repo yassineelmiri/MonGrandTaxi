@@ -6,6 +6,8 @@ use App\Models\Admin;
 use App\Http\Requests\AdminRequest;
 
 use App\Http\Controllers\Controller;
+use App\Models\chauffeurs;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
@@ -19,12 +21,23 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $Dh = Admin::count();
+        $count = 3 * $Dh;
+        $count1 = chauffeurs::count();
+        $count2 = Publication::count();
+        $count3 = Profile::count();
+
+        return view('admin.index',compact('count','count1','count2','count3'));
     }
     public function user()
     {
         $profiles = Profile::all();
         return view('admin.user', compact('profiles'));
+    }
+
+    public function chauffeur(){
+        $chauffeurs = chauffeurs::all();
+        return view('admin.chauffeur', compact('chauffeurs'));
     }
 
     /**
