@@ -18,23 +18,29 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <h3>Les passager</h3>
-            <div class="row ">
-                @foreach ($profile->publications as $publication)
-                    <x-publication :canUpdate="auth()->user()->id === $publication->profile_id" :publication="$publication" />
-                @endforeach
-            </div>
 
-            <h3>Les </h3>
-            <div class="row ">
-                @foreach ($chauffeurs as $chauffeur)
-                    @if ($chauffeur->profile_id === $profile->id)
-                        <x-chauffeur :canUpdate="auth()->user()->id === $chauffeur->profile_id" :chauffeur="$chauffeur" :publication="$publication" />
-                    @endif
-                @endforeach
+        @if ($profile->role === 'cheffeur')
+            <div class="row">
+                <h3>Les Historique</h3>
+                <div class="row ">
+                    @foreach ($profile->publications as $publication)
+                        <x-publication :canUpdate="auth()->user()->id === $publication->profile_id" :publication="$publication" />
+                    @endforeach
+                </div>
+
+
+
+                <h3>Les vouyage</h3>
+                <div class="row ">
+                    @foreach ($chauffeurs as $chauffeur)
+                        @if ($chauffeur->profile_id === $profile->id)
+                            <x-chauffeur :canUpdate="auth()->user()->id === $chauffeur->profile_id" :chauffeur="$chauffeur" :publication="$publication" :admins="$admins"
+                                :profile="$profile" />
+                        @endif
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 
 </x-master>

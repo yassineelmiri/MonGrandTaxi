@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
+
+use App\Models\Admin;
 use App\Models\chauffeurs;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -22,20 +24,18 @@ class ProfileController extends Controller
         $profiles = Profile::paginate(9);
         return view('profile.index', compact('profiles'));
     }
-    
 
-    public function show(Profile $profile,chauffeurs $chauffeurs)
+
+    public function show(Profile $profile, chauffeurs $chauffeurs, Admin $admin)
     {
-        // $id = $request->id;
-
-        // $Profile =Profile::findOrFail($id);
-        // if($Profile === Null){
-        //     return abort(404);
-        // }
+        // dd($admin);
+        //     $id = $profile->id;
+        //     $admin =Admin::findOrFail($id);
 
         $chauffeurs = chauffeurs::all();
 
-        return view('profile.show', compact('profile','chauffeurs'));
+        $admins = Admin::all();
+        return view('profile.show', compact('profile', 'chauffeurs', 'admins'));
     }
 
     public function create()
@@ -45,7 +45,7 @@ class ProfileController extends Controller
     public function store(ProfileRequest $request)
     {
 
-       
+
         //validation 
         $formFields = $request->validated();
 

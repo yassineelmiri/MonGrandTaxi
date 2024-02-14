@@ -26,7 +26,35 @@
             <hr>
             <div class="col">
                 <h5>chauffeur : {{ $publication->profile->name }}</h5>
-                <p>type {{ $chauffeur->type }}/{{ $chauffeur->type }}</p>
+                @php
+                    $count = 0; // Initialisation du compteur
+                @endphp
+
+                @foreach ($admins as $admin)
+                    @if ($admin->chauffeur_id === $chauffeur->id)
+                        @php
+                            $count++; // Incrémentation du compteur à chaque itération
+                        @endphp
+                    @endif
+                @endforeach
+                @if ("$count" === $chauffeur->type)
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Indisponible</h5>
+                            <p class="card-text">Ce type de chauffeur n'est pas disponible.</p>
+                        </div>
+                    </div>
+                @else
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Disponible</h5>
+                            <p class="card-text">Type {{ $count }} sur {{ $chauffeur->type }} disponibles.</p>
+                        </div>
+                    </div>
+                @endif
+
+
+
                 <footer class="blockquote-footer">
                     <br>
                     <p title="Source title">{{ $publication->prix }}Dhs</p>
@@ -36,7 +64,8 @@
                         <form action="{{ route('admin.store', $chauffeur->id) }}" method="post">
                             @csrf
                             <button onclick="return confirm('Vouler vous vraiment validé le passage')"
-                                class="btn btn-style" name="chauffeur_id" value="{{ $chauffeur->id }}" type="submit">validé</button>
+                                class="btn btn-style" name="chauffeur_id" value="{{ $chauffeur->id }}"
+                                type="submit">validé</button>
                         </form>
                     @endif
 
