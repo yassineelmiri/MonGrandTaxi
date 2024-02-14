@@ -30,8 +30,10 @@ Route::get('/login', [LoginController::class, 'show'])->name('login.show');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/lagout', [LoginController::class, 'logout'])->name('login.logout');
 
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/user', [AdminController::class, 'user'])->name('admin.user');
 Route::get('/admin/chauffeur', [AdminController::class, 'chauffeur'])->name('admin.chauffeur');
+Route::get('/admin/passager', [AdminController::class, 'passager'])->name('admin.passager');
 
 Route::resource('admin', AdminController::class);
 Route::resource('profiles', ProfileController::class);

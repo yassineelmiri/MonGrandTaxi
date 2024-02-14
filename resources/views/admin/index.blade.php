@@ -31,7 +31,7 @@
                 <li>
                     <h1
                         class="text-xl font-[500] text-white bg-blue-100/20 rounded py-[10px] px-8 flex items-center gap-x-4 ">
-                        <a href="/Wiki/Admin/dashboard" class="hidden lg:block">Dashboard</a>
+                        <a href="{{ route('admin.index') }}" class="hidden lg:block">Dashboard</a>
                     </h1>
                 </li>
 
@@ -52,28 +52,16 @@
                 <li>
                     <h1
                         class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                        <a href="/Wiki/Admin/tags" class="hidden lg:block">Tags</a>
+                        <a href="{{ route('admin.passager') }}" class="hidden lg:block">Passager</a>
                     </h1>
                 </li>
 
-                <li>
-                    <h1
-                        class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                        <a href="/Wiki/Admin/categories" class="hidden lg:block">Categories</a>
-                    </h1>
-                </li>
-
-                <li>
-                    <h1
-                        class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                        <a href="/Wiki/Admin/wikis" class="hidden lg:block">Wikis</a>
-                    </h1>
-                </li>
-
+            
                 <li class="mt-8">
                     <h1
                         class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                        <a href="/Wiki/Admin/settings" class="hidden lg:block">Settings</a>
+                        <a href="{{ route('profiles.show', auth()->user()->id) }}" class="hidden lg:block">Settings</a>
+
                     </h1>
                 </li>
 
@@ -81,7 +69,7 @@
                     <h1
                         class="text-xl font-[500] text-red-600 bg-red-100/10 border-2 border-red-500 rounded py-[10px] px-8 flex items-center gap-x-4">
                        
-                        <a href="/Wiki/Authentification/logout" class="hidden lg:block">Log out</a>
+                        <a href="{{ route('login.logout') }}" class="hidden lg:block">Log out</a>
                     </h1>
                 </li>
 

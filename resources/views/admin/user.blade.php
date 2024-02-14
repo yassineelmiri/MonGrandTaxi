@@ -31,49 +31,37 @@
             <li>
                 <h1
                     class="text-xl font-[500] text-white bg-blue-100/20 rounded py-[10px] px-8 flex items-center gap-x-4 ">
-                    <a href="/Wiki/Admin/dashboard" class="hidden lg:block">Dashboard</a>
+                    <a href="{{ route('admin.index') }}" class="hidden lg:block">Dashboard</a>
                 </h1>
             </li>
 
             <li>
                 <h1
                     class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="/Wiki/Admin/users" class="hidden lg:block">Users</a>
+                    <a href="{{ route('admin.user') }}" class="hidden lg:block">Users</a>
                 </h1>
             </li>
 
             <li>
                 <h1
                     class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="/Wiki/Admin/admins" class="hidden lg:block">Admins</a>
+                    <a href="{{ route('admin.chauffeur') }}" class="hidden lg:block">chauffeur</a>
                 </h1>
             </li>
 
             <li>
                 <h1
                     class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="/Wiki/Admin/tags" class="hidden lg:block">Tags</a>
+                    <a href="{{ route('admin.passager') }}" class="hidden lg:block">Passager</a>
                 </h1>
             </li>
 
-            <li>
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="/Wiki/Admin/categories" class="hidden lg:block">Categories</a>
-                </h1>
-            </li>
-
-            <li>
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="/Wiki/Admin/wikis" class="hidden lg:block">Wikis</a>
-                </h1>
-            </li>
 
             <li class="mt-8">
                 <h1
                     class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="/Wiki/Admin/settings" class="hidden lg:block">Settings</a>
+                    <a href="{{ route('profiles.show', auth()->user()->id) }}" class="hidden lg:block">Settings</a>
+
                 </h1>
             </li>
 
@@ -81,7 +69,7 @@
                 <h1
                     class="text-xl font-[500] text-red-600 bg-red-100/10 border-2 border-red-500 rounded py-[10px] px-8 flex items-center gap-x-4">
 
-                    <a href="/Wiki/Authentification/logout" class="hidden lg:block">Log out</a>
+                    <a href="{{ route('login.logout') }}" class="hidden lg:block">Log out</a>
                 </h1>
             </li>
 
@@ -101,7 +89,8 @@
 
             <table class="w-full bg-gray-500 py-2 px-2 rounded display" id="example" class="display">
                 <thead class="bg-[#000] text-white border-2 border-[#000]">
-                    <tr>                        <td class="py-4 px-2">Id</td>
+                    <tr>
+                        <td class="py-4 px-2">Id</td>
 
                         <td class="py-4 px-2">Picture</td>
                         <td class="py-4 px-2">firstName</td>
@@ -115,7 +104,6 @@
                 <tbody>
 
                     @foreach ($profiles as $profile)
-                        
                         <tr class='border-2 border-[#000]'>
                             <td class='py-2 px-2 border-2 border-[#000]'>#{{ $profile->id }}
                             </td>

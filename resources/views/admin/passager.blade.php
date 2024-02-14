@@ -56,7 +56,7 @@
                 </h1>
             </li>
 
-
+        
             <li class="mt-8">
                 <h1
                     class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
@@ -68,7 +68,7 @@
             <li>
                 <h1
                     class="text-xl font-[500] text-red-600 bg-red-100/10 border-2 border-red-500 rounded py-[10px] px-8 flex items-center gap-x-4">
-
+                   
                     <a href="{{ route('login.logout') }}" class="hidden lg:block">Log out</a>
                 </h1>
             </li>
@@ -90,49 +90,39 @@
             <table class="w-full bg-gray-500 py-2 px-2 rounded display" id="example" class="display">
                 <thead class="bg-[#000] text-white border-2 border-[#000]">
                     <tr>
-
+                       
                         <td class="py-4 px-2">Id</td>
-                        <td class="py-4 px-2">image</td>
-                        <td class="py-4 px-2">Name</td>
-                        <td class="py-4 px-2">Model</td>
-                        <td class="py-4 px-2">Nomber de place</td>
-                        <td class="py-4 px-2">Description</td>
-                        <td class="py-4 px-2">plaque</td>
+                        <td class="py-4 px-2">Date de départ</td>
+                        <td class="py-4 px-2">description</td>
+                        <td class="py-4 px-2">ville de départ</td>
+                        <td class="py-4 px-2">ville arrivé</td>
+                        <td class="py-4 px-2">prix</td>
                         <td class="py-4 px-2">chauffeur</td>
                         <td class="py-4 px-2">Actions</td>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @foreach ($chauffeurs as $chauffeur)
+                    @foreach ($publications as $publication)
                         <tr class='border-2 border-[#000]'>
-                            <td class='py-2 px-2 border-2 border-[#000]'>#{{ $chauffeur->id }}
-                            </td>
-                            <td class='py-2 px-2'>
-                                <div class='hw-[100%] rounded relative flex justify-center'><img width='10%'
-                                        class='w-[80px]'><img class="rounded-circle"
-                                        src="{{ asset('storage/' . $chauffeur->image) }}" alt="image">
-                                </div>
-                            </td>
-
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->name }}
-                            </td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->model }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->type }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->body }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->plaque }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $chauffeur->profile_id }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>#{{ $publication->id }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->date }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->body }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->lieu1 }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->lieu2 }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->prix }}</td>
+                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->profile_id }}</td>
 
                             <td class='py-2 px-2 border-2 border-[#000]'>
                                 <div class="card-foot border-top px-3 py-3 bg-light" style="z-index: 9">
-                                    <form action="{{ route('chauffeurs.destroy', $chauffeur->id) }}" method="POST">
+                                    <form action="{{ route('publications.destroy', $publication->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button
                                             class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70'
                                             style='transition-duration: 0.5s;'>Supprimer</button>
                                     </form>
-                                    <form action="{{ route('chauffeurs.edit', $chauffeur->id) }}">
+                                    <form action="{{ route('publications.edit', $publication->id) }}">
                                         @csrf
                                         <button
                                             class='bg-blue-500 text-white rounded px-4 py-2 border-2 border-blue-500 hover:bg-bleu-500/70'

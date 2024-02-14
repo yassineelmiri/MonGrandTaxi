@@ -39,6 +39,10 @@ class AdminController extends Controller
         $chauffeurs = chauffeurs::all();
         return view('admin.chauffeur', compact('chauffeurs'));
     }
+    public function passager(){
+        $publications = Publication::all();
+        return view('admin.passager', compact('publications'));
+    }
 
     /**
      * Show the form for creating a new resource.
