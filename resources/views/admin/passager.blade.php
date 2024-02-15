@@ -14,7 +14,7 @@
 
         <!-- Page Head -->
         <div>
-            <h1 class="text-md md:text-xl lg:text-3xl font-[800] mb-12">ADMIN / Users</h1>
+            <h1 class="text-md md:text-xl lg:text-3xl font-[800] mb-12">ADMIN / historique</h1>
         </div>
 
         <!-- Page COntent -->
@@ -23,7 +23,7 @@
             <table class="w-full bg-gray-500 py-2 px-2 rounded display" id="example" class="display">
                 <thead class="bg-[#000] text-white border-2 border-[#000]">
                     <tr>
-                       
+
                         <td class="py-4 px-2">Id</td>
                         <td class="py-4 px-2">Date de départ</td>
                         <td class="py-4 px-2">Description</td>
@@ -37,33 +37,36 @@
                 <tbody>
 
                     @foreach ($publications as $publication)
-                        <tr class='border-2 border-[#000]'>
-                            <td class='py-2 px-2 border-2 border-[#000]'>#{{ $publication->id }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->date }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->body }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->lieu1 }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->lieu2 }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->prix }}</td>
-                            <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->profile_id }}</td>
+                        @if ($publication->date < now())
+                            <tr class='border-2 border-[#000]'>
+                                <td class='py-2 px-2 border-2 border-[#000]'>#{{ $publication->id }}</td>
+                                <td class='py-2 px-2 border-2 border-[#000]'>{{ date('d-m-Y', strtotime($publication->date)) }}</td>
+                                <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->body }}</td>
+                                <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->lieu1 }}</td>
+                                <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->lieu2 }}</td>
+                                <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->prix }}</td>
+                                <td class='py-2 px-2 border-2 border-[#000]'>{{ $publication->profile_id }}</td>
 
-                            <td class='py-2 px-2 border-2 border-[#000]'>
-                                <div class="card-foot border-top px-3 py-3 bg-light" style="z-index: 9">
-                                    <form action="{{ route('publications.destroy', $publication->id) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button
-                                            class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70'
-                                            style='transition-duration: 0.5s;'>Supprimer</button>
-                                    </form>
-                                    <form action="{{ route('publications.edit', $publication->id) }}">
-                                        @csrf
-                                        <button
-                                            class='bg-blue-500 text-white rounded px-4 py-2 border-2 border-blue-500 hover:bg-bleu-500/70'
-                                            style='transition-duration: 0.5s;'>Modifier</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                                <td class='py-2 px-2 border-2 border-[#000]'>
+                                    <div class="card-foot border-top px-3 py-3 bg-light" style="z-index: 9">
+                                        <form action="{{ route('publications.destroy', $publication->id) }}"
+                                            method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button
+                                                class='bg-red-500 text-white rounded px-4 py-2 border-2 border-red-500 hover:bg-red-500/70'
+                                                style='transition-duration: 0.5s;'>Supprimer</button>
+                                        </form>
+                                        <form action="{{ route('publications.edit', $publication->id) }}">
+                                            @csrf
+                                            <button
+                                                class='bg-blue-500 text-white rounded px-4 py-2 border-2 border-blue-500 hover:bg-bleu-500/70'
+                                                style='transition-duration: 0.5s;'>Modifier</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
 
                 </tbody>

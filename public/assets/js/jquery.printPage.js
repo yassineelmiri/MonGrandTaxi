@@ -1,171 +1,75 @@
-<div class="card bg-light mx-2 col col-lg-3">
-    <div class="card-body">
-        @auth
-            @if ($canUpdate === true)
-                <a class="float-end btn btn-primary btn-sm"
-                    href="{{ route('publications.edit', $chauffeur->id) }}">Modifier</a>
-                <form action="{{ route('publications.destroy', $chauffeur->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button onclick="return confirm('Vouler vous vraiment supprimer la recette')"
-                        class="mx-2 float-end btn btn-danger btn-sm">Supprimer</button>
-                </form>
-            @endif
-        @endauth
-        <blockquote class="blockquote mb-0">
-            <div class="container bg-lenght">
-                <div class="">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="{{ asset('storage/' . $chauffeur->image) }}" width="100px"
-                            alt="image">
-                        <h3>{{ $chauffeur->name }}</h3>
-                        <a href="{{ route('profiles.show', $chauffeur->id) }}" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="col">
-                <h5>Chauffeur : {{ $publication->profile->name }}</h5>
-                @php
-                    $count = 0;
-                @endphp
+/**
+ * jQuery printPage Plugin
+ * @version: 1.0
+ * @author: Cedric Dugas, http://www.position-absolute.com
+ * @licence: MIT
+ * @desciption: jQuery page print plugin help you print your page in a better way
+ */
 
-                @foreach ($admins as $admin)
-                    @if ($admin->chauffeur_id === $chauffeur->id)
-                        @php
-                            $count++;
-                        @endphp
-                    @endif
-                @endforeach
-                @if ("$count" === $chauffeur->type)
-                    <div class="card bg-danger text-white">
-                        <div class="card-body">
-                            <h5 class="card-title">Indisponible</h5>
-                            <p class="card-text">Ce type de chauffeur n'est pas disponible.</p>
-                        </div>
-                    </div>
-                @else
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Disponible</h5>
-                            <p class="card-text">Type {{ $count }} sur {{ $chauffeur->type }} disponibles.</p>
-                        </div>
-                    </div>
-                @endif
+(function( $ ){
+  $.fn.printPage = function(options) {
+    // EXTEND options for this button
+    var pluginOptions = {
+      attr : "href",
+      url : false,
+      message: "Please wait while we create your document" 
+    };
+    $.extend(pluginOptions, options);
 
-
-
-                <footer class="blockquote-footer">
-                    <br>
-                    <p title="Source title">{{ $publication->prix }}Dhs</p>
-
-                    <p title="Source title">{{ $chauffeur->created_at->format('d-m-Y') }}</p>
-                    @if (auth()->user()->role === 'passager')
-                        <form id="reservationForm" action="{{ route('admin.store', $chauffeur->id) }}" method="post">
-                            @csrf
-                            <button onclick="return confirm('Voulez-vous vraiment valider le passage')"
-                               id="printPage" class="printPage btn btn-style" name="chauffeur_id" value="{{ $chauffeur->id }}"
-                                type="submit">Réservez une place</button>
-                        </form>
-                    @endif
-
-                </footer>
-            </div>
-
-        </blockquote>
-
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#printPage').printPage();
-    });
-</script>
-<script>
+    this.on("click", function(){  loadPrintDocument(this, pluginOptions); return false;  });
+    
     /**
-     * jQuery printPage Plugin
-     * @version: 1.0
-     * @author: Cedric Dugas, http://www.position-absolute.com
-     * @licence: MIT
-     * @desciption: jQuery page print plugin help you print your page in a better way
+     * Load & show message box, call iframe
+     * @param {jQuery} el - The button calling the plugin
+     * @param {Object} pluginOptions - options for this print button
+     */   
+    function loadPrintDocument(el, pluginOptions){
+      $("body").append(components.messageBox(pluginOptions.message));
+      $("#printMessageBox").css("opacity", 0);
+      $("#printMessageBox").animate({opacity:1}, 300, function() { addIframeToPage(el, pluginOptions); });
+    }
+    /**
+     * Inject iframe into document and attempt to hide, it, can't use display:none
+     * You can't print if the element is not dsplayed
+     * @param {jQuery} el - The button calling the plugin
+     * @param {Object} pluginOptions - options for this print button
      */
+    function addIframeToPage(el, pluginOptions){
 
-    (function($) {
-        $.fn.printPage = function(options) {
-            // EXTEND options for this button
-            var pluginOptions = {
-                attr: "href",
-                url: false,
-                message: "Please wait while we create your document"
-            };
-            $.extend(pluginOptions, options);
+        var url = (pluginOptions.url) ? pluginOptions.url : $(el).attr(pluginOptions.attr);
 
-            this.on("click", function() {
-                loadPrintDocument(this, pluginOptions);
-                return false;
-            });
-
-            /**
-             * Load & show message box, call iframe
-             * @param {jQuery} el - The button calling the plugin
-             * @param {Object} pluginOptions - options for this print button
-             */
-            function loadPrintDocument(el, pluginOptions) {
-                $("body").append(components.messageBox(pluginOptions.message));
-                $("#printMessageBox").css("opacity", 0);
-                $("#printMessageBox").animate({
-                    opacity: 1
-                }, 300, function() {
-                    addIframeToPage(el, pluginOptions);
-                });
-            }
-            /**
-             * Inject iframe into document and attempt to hide, it, can't use display:none
-             * You can't print if the element is not dsplayed
-             * @param {jQuery} el - The button calling the plugin
-             * @param {Object} pluginOptions - options for this print button
-             */
-            function addIframeToPage(el, pluginOptions) {
-
-                var url = (pluginOptions.url) ? pluginOptions.url : $(el).attr(pluginOptions.attr);
-
-                if (!$('#printPage')[0]) {
-                    $("body").append(components.iframe(url));
-                    $('#printPage').on("load", function() {
-                        printit();
-                    })
-                } else {
-                    $('#printPage').attr("src", url);
-                }
-            }
-            /*
-             * Call the print browser functionnality, focus is needed for IE
-             */
-            function printit() {
-                frames["printPage"].focus();
-                frames["printPage"].print();
-                unloadMessage();
-            }
-            /*
-             * Hide & Delete the message box with a small delay
-             */
-            function unloadMessage() {
-                $("#printMessageBox").delay(1000).animate({
-                    opacity: 0
-                }, 700, function() {
-                    $(this).remove();
-                });
-            }
-            /*
-             * Build html compononents for thois plugin
-             */
-            var components = {
-                iframe: function(url) {
-                    return '<iframe id="printPage" name="printPage" src=' + url +
-                        ' style="position:absolute;top:0px; left:0px;width:0px; height:0px;border:0px;overfow:none; z-index:-1"></iframe>';
-                },
-                messageBox: function(message) {
-                    return "<div id='printMessageBox' style='\
+        if(!$('#printPage')[0]){
+          $("body").append(components.iframe(url));
+          $('#printPage').on("load",function() {  printit();  })
+        }else{
+          $('#printPage').attr("src", url);
+        }
+    }
+    /*
+     * Call the print browser functionnality, focus is needed for IE
+     */
+    function printit(){
+      frames["printPage"].focus();
+      frames["printPage"].print();
+      unloadMessage();
+    }
+    /*
+     * Hide & Delete the message box with a small delay
+     */
+    function unloadMessage(){
+      $("#printMessageBox").delay(1000).animate({opacity:0}, 700, function(){
+        $(this).remove();
+      });
+    }
+    /*
+     * Build html compononents for thois plugin
+     */
+    var components = {
+      iframe: function(url){
+        return '<iframe id="printPage" name="printPage" src='+url+' style="position:absolute;top:0px; left:0px;width:0px; height:0px;border:0px;overfow:none; z-index:-1"></iframe>';
+      },
+      messageBox: function(message){
+        return "<div id='printMessageBox' style='\
           position:fixed;\
           top:50%; left:50%;\
           text-align:center;\
@@ -176,9 +80,8 @@
           border: 6px solid #555;\
           border-radius:8px; -webkit-border-radius:8px; -moz-border-radius:8px;\
           box-shadow:0px 0px 10px #888; -webkit-box-shadow:0px 0px 10px #888; -moz-box-shadow:0px 0px 10px #888'>\
-          " + message + "</div>";
-                }
-            }
-        };
-    })(jQuery);
-</script>
+          "+message+"</div>";
+      }
+    }
+  };
+});

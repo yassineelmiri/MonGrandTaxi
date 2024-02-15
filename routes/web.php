@@ -28,5 +28,7 @@ Route::resource('admin', AdminController::class);
 Route::resource('profiles', ProfileController::class);
 Route::resource('Passager', PassagerController::class);
 Route::resource('chauffeurs', ChauffeursController::class);
-
 Route::resource('publications', PublicationController::class);
+
+Route::get('/Print/{chauffeur}', [AdminController::class, 'printeview'])->name('printeview');
+

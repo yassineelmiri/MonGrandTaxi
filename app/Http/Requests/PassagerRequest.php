@@ -22,15 +22,15 @@ class PassagerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-            'telephone'=>'required',
-            'historique'=>'required',
-            'date'=>'required',
-            'email'=> 'required|email',
-            'password'=>'required|min:9|max:10|confirmed',
-            'bio'=>'required',
-            'image'=>'required|image|mimes:png,jpg,jpeg,svg'
-        
+            'name' => 'required',
+            'telephone' => 'required',
+            'historique' => 'required',
+            'date' => 'required|date|after:now',
+            'email' => 'required|email',
+            'password' => 'required|min:9|max:10|confirmed',
+            'bio' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg,svg'
+
         ];
     }
 }

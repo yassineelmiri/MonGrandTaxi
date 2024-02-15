@@ -1,5 +1,5 @@
 <x-master title="Mon Profile">
-    <div class="container py-5 mt-5">
+    <div class="container py-5 mt-5 mt-5 bg-light rounded">
 
         <h3>Ajouter une voiture</h3>
         @if ($errors->any())

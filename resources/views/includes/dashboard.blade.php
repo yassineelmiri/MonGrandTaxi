@@ -29,7 +29,7 @@
         <li>
             <h1
                 class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                <a href="{{ route('admin.passager') }}" class="hidden lg:block">Passager</a>
+                <a href="{{ route('admin.passager') }}" class="hidden lg:block">Historique</a>
             </h1>
         </li>
 

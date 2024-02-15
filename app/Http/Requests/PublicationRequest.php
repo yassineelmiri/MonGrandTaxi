@@ -22,11 +22,11 @@ class PublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date'=>'required',
-            'body'=>'required',
-            'lieu1'=>'required',
-            'lieu2'=>'required',
-            'prix'=>'required',
+            'date' => 'required|date|after:now',
+            'body' => 'required',
+            'lieu1' => 'required',
+            'lieu2' => 'required',
+            'prix' => 'required',
 
 
         ];

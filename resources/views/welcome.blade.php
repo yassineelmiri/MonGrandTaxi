@@ -86,51 +86,49 @@
                 <h3 class="title-style">Derniers voyages </h3>
             </div>
             @auth
-              
-                    <div class="text-center">
-                        <h3>LES VOYAGES</h3>
-                        <form class="d-flex justify-content-center" action="{{ route('publications.search') }}"
-                            method="GET">
-                            <input type="text" name="search" placeholder="Entre un nom de Ville"
-                                class="form-control me-2">
-                            <button type="submit" class="btn btn-primary">Rechercher</button>
-                        </form>
+                <div class="text-center">
+                    <h3>LES VOYAGES</h3>
+                    <form class="d-flex justify-content-center" action="{{ route('publications.search') }}" method="GET">
+                        <input type="text" name="search" placeholder="Entre un nom de Ville" class="form-control me-2">
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                    </form>
+                </div>
 
-                    </div>
-
-                    <div class="container mt-5 ">
-                        <div class="row justify-content-md-center">
-                            @foreach ($publications as $publication)
+                <div class="container mt-5 ">
+                    <div class="row justify-content-md-center">
+                        @foreach ($publications as $publication)
+                            @if ($publication->date > now())
                                 <x-publication :canUpdate="auth()->user()->id === $publication->profile_id" :publication="$publication" />
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center mt-3">
-                        {{ $publications->links() }}
-                    </div>
-              
-            @endauth
-        </div>
-        </div>
-        </div>
-
-        <section class="w3l-call-to-action-6 py-4">
-            <div class="container py-md-5 py-sm-4 py-4">
-                <div class="d-lg-flex align-items-center justify-content-between">
-                    <div class="col-lg-7 left-content-call pe-lg-2">
-                        <h3 class="title-big">Quality Service with
-                            Free Collection & Delivery</h3>
-                    </div>
-                    <div class="col-lg-5 right-content-call mt-lg-0 mt-4">
-                        <ul class="buttons d-sm-flex align-items-center justify-content-end">
-                            <li class="phone-sec me-xl-4 me-lg-0 me-sm-4"><i class="fas fa-phone-volume"></i>
-                                <a class="call-style-w3" href="tel:+1(23) 456 789 0000">+(212)6 14 23 23 58</a>
-                            </li>
-                            <li><a href="mailto:youcode@gmail.com" class="btn btn-style mt-sm-0 mt-3">Order Now</a>
-                            </li>
-                        </ul>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
+                <div class="d-flex justify-content-center mt-3">
+                    {{ $publications->links() }}
+                </div>
+            @endauth
+
+        </div>
+    </div>
+    </div>
+
+    <section class="w3l-call-to-action-6 py-4">
+        <div class="container py-md-5 py-sm-4 py-4">
+            <div class="d-lg-flex align-items-center justify-content-between">
+                <div class="col-lg-7 left-content-call pe-lg-2">
+                    <h3 class="title-big">Quality Service with
+                        Free Collection & Delivery</h3>
+                </div>
+                <div class="col-lg-5 right-content-call mt-lg-0 mt-4">
+                    <ul class="buttons d-sm-flex align-items-center justify-content-end">
+                        <li class="phone-sec me-xl-4 me-lg-0 me-sm-4"><i class="fas fa-phone-volume"></i>
+                            <a class="call-style-w3" href="tel:+1(23) 456 789 0000">+(212)6 14 23 23 58</a>
+                        </li>
+                        <li><a href="mailto:youcode@gmail.com" class="btn btn-style mt-sm-0 mt-3">Order Now</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </section>
-    </x-master>
+        </div>
+    </section>
+</x-master>

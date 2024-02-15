@@ -47,9 +47,18 @@ class AdminController extends Controller
         $formFields = $request->validated();
         $formFields['profile_id']= Auth::id();
         $formFields['chauffeur_id']= $request->chauffeur_id;
+        $chauffeur = $request->chauffeur_id;
         Admin::create($formFields);
-        return view('publication.create');
+        return to_route('printeview', $chauffeur)->with('success', 'Le passager a élé bien supprimer');
 
+    }
+    public function print(chauffeurs $chauffeur){
+        return view('Printeview',compact('chauffeur'));
+    }
+
+
+    public function printeview(chauffeurs $chauffeur){
+        return view('Print',compact('chauffeur'));
     }
 
 }
