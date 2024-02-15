@@ -12,18 +12,16 @@
                 </div>
             </div>
             <hr>
-            <h3>Nomber de place :{{ $publication->profile->id }} </h3>
             <div class="col">
-                <h5>Débart : {{ $publication->lieu1 }} to --> {{ $publication->lieu2 }} </h5>
+                <p>Débart : {{ $publication->lieu1 }} to-> {{ $publication->lieu2 }} </p>
                 <p> {{ $publication->body }}</p>
-
                 <footer class="blockquote-footer">
                     <br>
                     <p title="Source title">{{ $publication->prix }}Dhs</p>
-
                     <p title="Source title">{{ $publication->created_at->format('d-m-Y') }}</p>
                     @if (auth()->user()->role === 'passager')
-                    <a href="{{ route('profiles.show', $publication->profile->id) }}" class="btn btn-style">Voir detail</a>
+                        <a href="{{ route('profiles.show', $publication->profile->id) }}" class="btn btn-style">Voir
+                            détail</a>
                     @endif
 
                 </footer>

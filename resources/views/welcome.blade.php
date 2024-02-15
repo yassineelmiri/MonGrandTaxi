@@ -16,22 +16,6 @@
             </div>
         </div>
     </section>
-
-    {{-- <section   class="mx-1 mb-5 fcpol"> --}}
-    {{-- 
-        <div class="container mb-5 mt-5">
-            <div class="row justify-content-center align-items-center">
-            <div class="col-lg-9 text-center">
-                <form action="{{ route('search') }}" method="POST" class="form-search d-flex mb-3">
-                    @csrf
-                <input type="search" class="form-control px-4" name="search" id="search" placeholder="You can search at passagers here" />
-                <button type="submit"  class="btn btn-primary">Search</button>
-                </form>
-            </div>
-            </div>
-        </div> --}}
-
-
     <section class="w3l-bottom-grids-6 py-5">
         <div class="container pt-lg-5 pt-md-4 pt-2">
             <div class="row justify-content-center">
@@ -98,16 +82,16 @@
     <div class="w3l-grids-block-5 pb-5 pt-md-2 pt-4">
         <div class="container pb-lg-5 pb-md-4 pb-2">
             <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-                <h5>What We Offer</h5>
-                <h3 class="title-style">Les dernier Vouyage</h3>
+                <h5>Des Offres</h5>
+                <h3 class="title-style">Derniers voyages </h3>
             </div>
             @auth
               
                     <div class="text-center">
-                        <h3>LES VOUYAGE</h3>
+                        <h3>LES VOYAGES</h3>
                         <form class="d-flex justify-content-center" action="{{ route('publications.search') }}"
                             method="GET">
-                            <input type="text" name="search" placeholder="Entre un nom de lieu"
+                            <input type="text" name="search" placeholder="Entre un nom de Ville"
                                 class="form-control me-2">
                             <button type="submit" class="btn btn-primary">Rechercher</button>
                         </form>
@@ -149,30 +133,4 @@
                 </div>
             </div>
         </section>
-        {{--     
-    <h1 class="mx-5 mb-5 kilua">LAST RACETTES:</h1>
-
-    <div class="row">
-        @forelse ($passagers as $passager)
-            <div class="col-md-4 mb-4 wikis">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$passager->name}}</h5>
-                        <img src="/storage/{{$passager->image}}" alt="{{$passager->image}}" class="img-fluid w-100 rounded-3">
-                        <p class="card-text">{{$passager->description}}<br></p>
-                        <p class="card-text">choumicha</p>
-                        <div class="specs"></div>
-                        <div class="card-footer">
-                            <a class="showw " href="{{ route('showOne', ['id' => $passager->id]) }}">Show</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @empty
-            <div class="col-md-12">
-                <h1>no passagers</h1>
-            </div>
-        @endforelse
-    </div>
-    </section> --}}
     </x-master>

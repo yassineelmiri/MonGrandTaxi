@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+@include('includes.head')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- TAILWIND CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.tailwindcss.min.css">
-
-    <title>Admin</title>
-
-
-</head>
 
 {{-- <body class="bg-cover bg-center" style="background-image: url('<?php echo UrlRoot; ?>/public/uploads/hero-bg.jpg');"> --}}
 
@@ -21,61 +8,7 @@
 <section class="flex items-center relative">
 
     <!-- Aside Bar -->
-    <aside class="h-[100vh] min-w-[28vw] md:min-w-[20vw] md:w-[20vw] bg-[#000]">
-        <ul class="flex flex-col my-[50px] mx-8 gap-y-4">
-            <li class="mb-8">
-                <a href="/Wiki">
-                </a>
-            </li>
-
-            <li>
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/20 rounded py-[10px] px-8 flex items-center gap-x-4 ">
-                    <a href="{{ route('admin.index') }}" class="hidden lg:block">Dashboard</a>
-                </h1>
-            </li>
-
-            <li>
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="{{ route('admin.user') }}" class="hidden lg:block">Users</a>
-                </h1>
-            </li>
-
-            <li>
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="{{ route('admin.chauffeur') }}" class="hidden lg:block">chauffeur</a>
-                </h1>
-            </li>
-
-            <li>
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="{{ route('admin.passager') }}" class="hidden lg:block">Passager</a>
-                </h1>
-            </li>
-
-        
-            <li class="mt-8">
-                <h1
-                    class="text-xl font-[500] text-white bg-blue-100/10 rounded py-[10px] px-8 flex items-center gap-x-4">
-                    <a href="{{ route('profiles.show', auth()->user()->id) }}" class="hidden lg:block">Settings</a>
-
-                </h1>
-            </li>
-
-            <li>
-                <h1
-                    class="text-xl font-[500] text-red-600 bg-red-100/10 border-2 border-red-500 rounded py-[10px] px-8 flex items-center gap-x-4">
-                   
-                    <a href="{{ route('login.logout') }}" class="hidden lg:block">Log out</a>
-                </h1>
-            </li>
-
-
-        </ul>
-    </aside>
+    @include('includes.dashboard')
     <!-- Dashboard -->
     <div class="w-[70vh] md:w-[80vw] h-[100vh]  py-[50px] px-8 overflow-y-scroll overflow-x-none">
 
@@ -93,11 +26,11 @@
                        
                         <td class="py-4 px-2">Id</td>
                         <td class="py-4 px-2">Date de départ</td>
-                        <td class="py-4 px-2">description</td>
-                        <td class="py-4 px-2">ville de départ</td>
+                        <td class="py-4 px-2">Description</td>
+                        <td class="py-4 px-2">Ville de départ</td>
                         <td class="py-4 px-2">ville arrivé</td>
-                        <td class="py-4 px-2">prix</td>
-                        <td class="py-4 px-2">chauffeur</td>
+                        <td class="py-4 px-2">Prix</td>
+                        <td class="py-4 px-2">Chauffeur</td>
                         <td class="py-4 px-2">Actions</td>
                     </tr>
                 </thead>
@@ -140,17 +73,4 @@
     </div>
 
 </section>
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/dataTables.tailwindcss.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable({});
-    });
-</script>
-
-</body>
-
-</html>
+@include('includes.footer')

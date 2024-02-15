@@ -28,12 +28,7 @@ class ProfileController extends Controller
 
     public function show(Profile $profile, chauffeurs $chauffeurs, Admin $admin)
     {
-        // dd($admin);
-        //     $id = $profile->id;
-        //     $admin =Admin::findOrFail($id);
-
         $chauffeurs = chauffeurs::all();
-
         $admins = Admin::all();
         return view('profile.show', compact('profile', 'chauffeurs', 'admins'));
     }
@@ -44,26 +39,11 @@ class ProfileController extends Controller
     }
     public function store(ProfileRequest $request)
     {
-
-
-        //validation 
         $formFields = $request->validated();
-
-        //Hash
         $formFields['password'] = Hash::make($request->password);
-
-        //insert image
-        // $formFields['image'] = $request->file('image')->store('profile', 'public');
-
         $this->uploadImage($request, $formFields);
-
-
-        //insertion profile
         Profile::create($formFields);
-
-        //redirection
         return redirect()->route('profiles.index')->with('success', 'votre Compte est bien créé.');
-
     }
     public function destroy(Profile $profile)
     {
@@ -78,13 +58,8 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request, Profile $profile)
     {
         $formFields = $request->validated();
-        //Hash
         $formFields['password'] = Hash::make($request->password);
-
-        //insert image
         $this->uploadImage($request, $formFields);
-
-
         $profile->fill($formFields)->save();
         return to_route('profiles.show', $profile->id)->with('success', 'Le Profile a élé bien Modification');
 
@@ -92,8 +67,6 @@ class ProfileController extends Controller
 
     private function uploadImage(ProfileRequest $request, array &$formFields)
     {
-
-        //insert image
         unset($formFields['image']);
         if ($request->hasfile('image')) {
             $formFields['image'] = $request->file('image')->store('profile', 'public');

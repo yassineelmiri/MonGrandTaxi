@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
 use Illuminate\Http\Request;
 
 
 class LoginController extends Controller
 {
-
+    
     public function show()
     {
         return view('login.show');
@@ -27,11 +25,11 @@ class LoginController extends Controller
             switch (auth()->user()->role) {
                 case "passager":
                     $request->session()->regenerate();
-                    return redirect()->route('publications.index')->with('success', 'Vous êtes bien connecté ' . $login . ".");
+                    return redirect()->route('homePage')->with('success', 'Vous êtes bien connecté ' . $login . ".");
                     break;
                 case 'cheffeur':
                     $request->session()->regenerate();
-                    return redirect()->route('profiles.index')->with('success', 'Vous êtes bien connecté ' . $login . ".");
+                    return redirect()->route('homePage')->with('success', 'Vous êtes bien connecté ' . $login . ".");
                     break;
                 case 'admin':
                     $request->session()->regenerate();

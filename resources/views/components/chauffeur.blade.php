@@ -25,15 +25,15 @@
             </div>
             <hr>
             <div class="col">
-                <h5>chauffeur : {{ $publication->profile->name }}</h5>
+                <h5>Chauffeur : {{ $publication->profile->name }}</h5>
                 @php
-                    $count = 0; // Initialisation du compteur
+                    $count = 0;
                 @endphp
 
                 @foreach ($admins as $admin)
                     @if ($admin->chauffeur_id === $chauffeur->id)
                         @php
-                            $count++; // Incrémentation du compteur à chaque itération
+                            $count++;
                         @endphp
                     @endif
                 @endforeach
@@ -65,7 +65,7 @@
                             @csrf
                             <button onclick="return confirm('Vouler vous vraiment validé le passage')"
                                 class="btn btn-style" name="chauffeur_id" value="{{ $chauffeur->id }}"
-                                type="submit">validé</button>
+                                type="submit">Réservez une place</button>
                         </form>
                     @endif
 
