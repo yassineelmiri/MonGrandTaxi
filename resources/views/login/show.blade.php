@@ -19,8 +19,9 @@
             </div>
 
             <button class="btn btn-style w-100 py-2" type="submit">Sign in</button>
+            <p>Mot de passe oublié ?</p>
         </form>
-        <p><a href="{{ route('profiles.create') }}">sing-up</a></p>
+        <p><a href="{{ route('profiles.create') }}">Créer nouveau compte</a></p>
 
         <p class="mt-5 my-5 mb-3 text-body-secondary">&copy; 2024–2025</p>
 

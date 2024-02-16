@@ -24,7 +24,7 @@ class AdminController extends Controller
         $count2 = Publication::count();
         $count3 = Profile::count();
 
-        return view('admin.index',compact('count','count1','count2','count3'));
+        return view('admin.index', compact('count', 'count1', 'count2', 'count3'));
     }
     public function user()
     {
@@ -32,33 +32,35 @@ class AdminController extends Controller
         return view('admin.user', compact('profiles'));
     }
 
-    public function chauffeur(){
+    public function chauffeur()
+    {
         $chauffeurs = chauffeurs::all();
         return view('admin.chauffeur', compact('chauffeurs'));
     }
-    public function passager(){
+    public function passager()
+    {
         $publications = Publication::all();
         return view('admin.passager', compact('publications'));
     }
 
-   
+
     public function store(AdminRequest $request)
     {
         $formFields = $request->validated();
-        $formFields['profile_id']= Auth::id();
-        $formFields['chauffeur_id']= $request->chauffeur_id;
+        $formFields['profile_id'] = Auth::id();
+        $formFields['chauffeur_id'] = $request->chauffeur_id;
         $chauffeur = $request->chauffeur_id;
         Admin::create($formFields);
         return to_route('printeview', $chauffeur)->with('success', 'Le passager a élé bien supprimer');
 
     }
-    public function print(chauffeurs $chauffeur){
-        return view('Printeview',compact('chauffeur'));
-    }
 
 
-    public function printeview(chauffeurs $chauffeur){
-        return view('Print',compact('chauffeur'));
+
+    public function printeview(chauffeurs $chauffeur)
+    {
+        $publication = Publication::where('profile_id', $chauffeur->profile_id)->firstOrFail();
+        return view('Print', compact('chauffeur','publication'));
     }
 
 }
