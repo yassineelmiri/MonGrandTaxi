@@ -7,7 +7,7 @@
             <a href="{{ route('profiles.show', $profile->id) }}" class="stretched-link"></a>
         </div> 
        
-        <div class="card-foot border-top px-3 py-3 bg-light" style="z-index: 9">
+        <div class="card-foot border-top px-3 py-3 bg-light z-index=5" style="z-index: 9">
             <form action="{{ route('profiles.destroy', $profile->id) }}" method="POST">
                 @method('DELETE')
                 @csrf    
@@ -15,7 +15,7 @@
             </form>
             <form action="{{ route('profiles.edit',$profile->id) }}">
                 @csrf   
-                <button class="btn btn-primary float-end mx-2" >Modifier</button>
+                <button class="btn btn-primary float-end mx-2" >Modifier P</button>
             </form>
         </div>  
           

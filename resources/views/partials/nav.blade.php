@@ -8,9 +8,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll">
-                {{-- <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ route('profiles.index') }}">index</a>
-                </li> --}}
                 @auth
                     @if (auth()->user()->role === 'passager')
                         <li class="nav-item">
@@ -29,12 +26,6 @@
                                 chauffeurs</a>
                         </li>
                     @endif
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('profiles.create') }}">Add passager</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('show') }}">Dashboard</a>
-                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login.logout') }}">Déconnection</a>
                     </li>
@@ -42,10 +33,8 @@
             </ul>
             @guest
                 <a class="btn btn-style" href="{{ route('login') }}">login</a>
-                {{-- <a class="btn btn-style" href="{{ route('profiles.create') }}">sing-up</a> --}}
             @endguest
         </div>
-        <!-- toggle switch for light and dark theme -->
         <div class="cont-ser-position">
             <nav class="navigation">
                 <div class="theme-switch-wrapper">
@@ -59,6 +48,5 @@
                 </div>
             </nav>
         </div>
-        <!-- //toggle switch for light and dark theme -->
     </nav>
 @endonce

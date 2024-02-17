@@ -27,9 +27,6 @@
                         <x-publication :canUpdate="auth()->user()->id === $publication->profile_id" :publication="$publication" />
                     @endforeach
                 </div>
-
-
-
                 <h3>Les vouyage</h3>
                 <div class="row ">
                     @foreach ($chauffeurs as $chauffeur)

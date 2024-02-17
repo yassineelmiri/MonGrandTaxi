@@ -56,7 +56,7 @@
                     <br>
                     <p title="Source title">{{ $publication->prix }}Dhs</p>
 
-                    <p title="Source title">{{ $chauffeur->created_at->format('d-m-Y') }}</p>
+                    <p title="Source title">{{ $chauffeur->updated_at->format('d-m-Y') }}</p>
                     @if (auth()->user()->role === 'passager' && !("$count" === $chauffeur->type))
                         <form id="reservationForm" action="{{ route('admin.store', $chauffeur->id) }}" method="post">
                             @csrf

@@ -7,6 +7,7 @@ use App\Http\Requests\PublicationRequest;
 use App\Models\Publication;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PublicationController extends Controller
 {
@@ -23,7 +24,7 @@ class PublicationController extends Controller
 
     public function store(PublicationRequest $request)
     {
-        $formFields = $request->validated();     
+        $formFields = $request->validated();
         $formFields['profile_id'] = Auth::id();
         Publication::create($formFields);
         return to_route('publications.index')->with('success', 'votre recette a été bien create .');
@@ -41,15 +42,14 @@ class PublicationController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Publication $publication)
     {
+        Gate::authorize('update',$publication);
         return view('publication.edit', compact('publication'));
     }
     public function update(PublicationRequest $request, Publication $publication)
     {
+        Gate::authorize('update',$publication);
         $formFields = $request->validated();
         $this->uploadImage($request, $formFields);
         $publication->fill($formFields)->save();

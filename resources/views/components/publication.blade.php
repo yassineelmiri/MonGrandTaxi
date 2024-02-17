@@ -18,14 +18,14 @@
                 <footer class="blockquote-footer">
                     <br>
                     <p title="Source title">{{ $publication->prix }}Dhs</p>
-                    <p title="Source title">{{ $publication->created_at->format('d-m-Y') }}</p>
+                    <p title="Source title">{{ date('d-m-Y', strtotime($publication->date)) }}</p>
                     @if (auth()->user()->role === 'passager')
                         <a href="{{ route('profiles.show', $publication->profile->id) }}" class="btn btn-style">Voir
                             détail</a>
                     @endif
 
                 </footer>
-                @if ($canUpdate === true)
+                @if (auth()->user()->id === $publication->profile_id )
                     <a class="float-end btn btn-primary btn-sm"
                         href="{{ route('publications.edit', $publication->id) }}">Modifier</a>
                     <form action="{{ route('publications.destroy', $publication->id) }}" method="post">

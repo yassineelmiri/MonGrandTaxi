@@ -78,14 +78,14 @@
         </div>
     </section>
 
+    @auth
+        <div class="w3l-grids-block-5 pb-5 pt-md-2 pt-4">
+            <div class="container pb-lg-5 pb-md-4 pb-2">
+                <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
+                    <h5>Des Offres</h5>
+                    <h3 class="title-style">Derniers voyages </h3>
+                </div>
 
-    <div class="w3l-grids-block-5 pb-5 pt-md-2 pt-4">
-        <div class="container pb-lg-5 pb-md-4 pb-2">
-            <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
-                <h5>Des Offres</h5>
-                <h3 class="title-style">Derniers voyages </h3>
-            </div>
-            @auth
                 <div class="text-center">
                     <h3>LES VOYAGES</h3>
                     <form class="d-flex justify-content-center" action="{{ route('publications.search') }}" method="GET">
@@ -106,12 +106,12 @@
                 <div class="d-flex justify-content-center mt-3">
                     {{ $publications->links() }}
                 </div>
-            @endauth
 
+
+            </div>
         </div>
-    </div>
-    </div>
-
+        </div>
+    @endauth
     <section class="w3l-call-to-action-6 py-4">
         <div class="container py-md-5 py-sm-4 py-4">
             <div class="d-lg-flex align-items-center justify-content-between">
